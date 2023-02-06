@@ -1,6 +1,8 @@
 SET FOREIGN_KEY_CHECKS=0;
 
 -- Suppression des Tableaux
+drop table if exists Sort;
+drop table if exists Aptitude;
 drop table if exists Unité;
 drop table if exists Trait;
 drop table if exists SousFaction;
@@ -36,6 +38,26 @@ CREATE TABLE Trait (
     FOREIGN KEY(id_sousFaction) REFERENCES SousFaction(num_sousFaction)
 );
 
+CREATE TABLE Aptitude (
+    num_apti int PRIMARY KEY AUTO_INCREMENT,
+    id_faction int NOT NULL,
+    id_sousFaction int DEFAULT NULL,
+    nom_apti varchar(255) NOT NULL,
+    desc_apti varchar(255) DEFAULT NULL,
+    FOREIGN KEY(id_faction) REFERENCES Faction(num_faction),
+    FOREIGN KEY(id_sousFaction) REFERENCES SousFaction(num_sousFaction)
+);
+
+CREATE TABLE Sort (
+    num_sort int PRIMARY KEY AUTO_INCREMENT,
+    id_faction int NOT NULL,
+    id_sousFaction int DEFAULT NULL,
+    nom_sort varchar(255) NOT NULL,
+    desc_sort varchar(255) DEFAULT NULL,
+    FOREIGN KEY(id_faction) REFERENCES Faction(num_faction),
+    FOREIGN KEY(id_sousFaction) REFERENCES SousFaction(num_sousFaction)
+);
+
 -- ------------------------
 create table Unité (
     numéro_unit int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -65,4 +87,9 @@ INSERT INTO Unité(faction_id_unit, personnage_unit, nom_unit, nomFaction_unit, 
 -- Insertion des traits
 INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
 SELECT id_faction, "Fureur de sang", num_sousFaction, "Chaque fois que ce Seigneur de guerre fait une attaque de mêlée, un jet de blessure non modifié de 6 inflige 1 blessur mortelle à la cible en plus de tout autre dégât normal."
-FROM SousFaction WHERE num_sousFaction = 1;
+FROM SousFaction WHERE nom_sousFaction = "Novokh";
+-- Insertion des Aptitudes
+INSERT INTO Aptitude(id_faction, id_sousFaction, nom_apti) VALUES (1, 2, "Test");
+INSERT INTO Aptitude(id_faction, nom_apti) VALUES (1, "Test2");
+-- Insertion des sorts
+INSERT INTO Sort(id_faction, nom_sort) VALUES (2, "Death");
