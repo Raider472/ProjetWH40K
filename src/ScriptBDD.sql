@@ -1,6 +1,7 @@
 SET FOREIGN_KEY_CHECKS=0;
 
 -- Suppression des Tableaux
+drop table if exists SortPris;
 drop table if exists Sort;
 drop table if exists Aptitude;
 drop table if exists Unité;
@@ -38,6 +39,8 @@ CREATE TABLE Trait (
     FOREIGN KEY(id_sousFaction) REFERENCES SousFaction(num_sousFaction)
 );
 
+-- -------------------------
+
 CREATE TABLE Aptitude (
     num_apti int PRIMARY KEY AUTO_INCREMENT,
     id_faction int NOT NULL,
@@ -48,6 +51,8 @@ CREATE TABLE Aptitude (
     FOREIGN KEY(id_sousFaction) REFERENCES SousFaction(num_sousFaction)
 );
 
+-- -------------------------
+
 CREATE TABLE Sort (
     num_sort int PRIMARY KEY AUTO_INCREMENT,
     id_faction int NOT NULL,
@@ -56,6 +61,15 @@ CREATE TABLE Sort (
     desc_sort varchar(255) DEFAULT NULL,
     FOREIGN KEY(id_faction) REFERENCES Faction(num_faction),
     FOREIGN KEY(id_sousFaction) REFERENCES SousFaction(num_sousFaction)
+);
+
+-- -----------------------
+
+CREATE TABLE SortPris (
+    id_unitchoisie int NOT NULL,
+    id_sort int NOT NULL,
+    PRIMARY KEY(id_unitchoisie, id_sort),
+    FOREIGN KEY(id_sort) REFERENCES Sort(num_sort)
 );
 
 -- ------------------------
@@ -70,6 +84,7 @@ create table Unité (
     point_unit int NOT NULL DEFAULT 0,
     min_unit int NOT NULL,
     max_unit int NOT NULL,
+    nombre_sort int DEFAULT NULL,
     FOREIGN KEY(faction_id_unit) REFERENCES Faction(num_faction),
     FOREIGN KEY(trait_unit) REFERENCES Trait(num_trait),
     FOREIGN KEY(sousFaction_unit) REFERENCES SousFaction(num_sousFaction)
