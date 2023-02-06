@@ -73,7 +73,7 @@ CREATE TABLE SortPris (
 );
 
 -- ------------------------
-create table Unité (
+CREATE TABLE Unité (
     numéro_unit int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     faction_id_unit int NOT NULL,
     sousFaction_unit int DEFAULT NULL,
@@ -88,6 +88,13 @@ create table Unité (
     FOREIGN KEY(faction_id_unit) REFERENCES Faction(num_faction),
     FOREIGN KEY(trait_unit) REFERENCES Trait(num_trait),
     FOREIGN KEY(sousFaction_unit) REFERENCES SousFaction(num_sousFaction)
+);
+
+-- ------------------------
+CREATE TABLE UnitéPrise (
+    numéro_unit int NOT NULL,
+    id_unitPris int NOT NULL AUTO_INCREMENT,
+    -------
 );
 
 -- Insértion dans les tableaux
