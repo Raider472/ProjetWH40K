@@ -131,7 +131,7 @@ CREATE TABLE SortPris (
 -- Insertion Des Factions
 INSERT INTO Faction(nom_faction, alliance_faction) VALUES ("Nécrons", "Xeno"), ("Thousand Sons", "Chaos"), ("Ork", "Xeno");
 -- Insertion Des Sous Factions
-INSERT INTO SousFaction(id_faction, nom_sousFaction) VALUES (1, "Neutre");
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) VALUES (1, "Neutre", "Nécrons");
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Novokh", nom_faction FROM Faction WHERE num_faction = 1; 
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Szarekhan", nom_faction FROM Faction WHERE num_faction = 1;
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Mephrit", nom_faction FROM Faction WHERE num_faction = 1;
@@ -142,7 +142,7 @@ INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_fac
 INSERT INTO Unité(faction_id_unit, personnage_unit, nom_unit, nomFaction_unit, point_unit, min_unit, max_unit) VALUES (1, false, "Guerrier Nécrons", "Nécrons", 13, 10, 20), (1, false, "Destroyer Skorpek", "Nécron", 45, 3, 6);
 -- Insertion des traits
 INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
-SELECT id_faction, "Fureur de sang", num_sousFaction, "Chaque fois que ce Seigneur de guerre fait une attaque de mêlée, un jet de blessure non modifié de 6 inflige 1 blessur mortelle à la cible en plus de tout autre dégât normal."
+SELECT id_faction, "Fureur de sang", num_sousFaction, "Chaque fois que ce Seigneur de guerre fait une attaque de mêlée, un jet de blessure non modifié de 6 inflige 1 blessure mortelle à la cible en plus de tout autre dégât normal."
 FROM SousFaction 
 WHERE nom_sousFaction = "Novokh";
 INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
@@ -162,9 +162,14 @@ SELECT id_faction, "Frappe précognitive", num_sousFaction, "Au début de la pha
 FROM SousFaction 
 WHERE nom_sousFaction = "Nihilakh";
 INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
-SELECT id_faction, "", num_sousFaction, ""
+SELECT id_faction, "Stratège hyperlogique", num_sousFaction, "Tant que ce Seigneur de Guerre est sur le champ de bataille, chaque fois que vous dépensez un PC pour utiliser un stratagème, vous pouvez jeter un D6: sur 5+, le pc vous est restitué."
 FROM SousFaction 
 WHERE nom_sousFaction = "Sautekh";
+INSERT INTO Trait(id_faction, nom_trait, desc_trait) 
+VALUES (1, "Volonté immuable", "Chaque fois qu'on alloue une attaque à ce Seigneur de Guerre, on soustrait 1 à la caractéristique de Dégats de l'attaque (jusqu'à un minimum de 1)."),
+(1, "Folie éternelle", "Chaque fois que ce Seigneur de Guerre fait une attaque de mêlée, vous pouvez relancer le jet de blessure"),
+(1, "Vanité imortelle", "Chaque fois que ce Seigneur de Guerre est censé perdre un PV suite à une blessure mortelle, jetez un D6: sur un 5+, le PV n'est pas perdu. \n Ce Seigneur de Guerre a l'aptitude suivante: Vanité immortelle (aura): Tant qu'une unité Base<Dynastie> amie est à 6 pouce de cette figurine, chaque fois qu'un test d'attrition est effectué pour l'unité, ignorez-en certains ou tous les modificateurs."),
+(1, "Servant du roi silencieux", "Ajoutez 3 pouce à la portée des aptitudes d'aura de ce Seigneur de Guerre (max 9). De plus, quand ce Seigneur de Guerre utilise les aptitudes Que Ma Volonté s'Acomplisse, Volonté du Dynaste ou Adaptation Stratégique, vous pouvez choisir une unité Base <Dynastie> amie à 12 pouce de ce Seigneur de Guerre au lieu de 9 pouce.");
 -- Insertion des Aptitudes
 INSERT INTO Aptitude(id_faction, id_sousFaction, nom_apti) VALUES (1, 2, "Test");
 INSERT INTO Aptitude(id_faction, nom_apti) VALUES (1, "Test2");
