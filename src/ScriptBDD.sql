@@ -5,6 +5,7 @@ drop table if exists SortPris;
 drop table if exists UnitéPrise;
 drop table if exists Liste;
 drop table if exists Sort;
+drop table if exists AptitudeLiaison;
 drop table if exists Aptitude;
 drop table if exists Unité;
 drop table if exists Trait;
@@ -30,19 +31,17 @@ create table SousFaction (
 );
 
 -- ------------------------
-
 CREATE TABLE Trait (
     num_trait int PRIMARY KEY AUTO_INCREMENT,
     id_faction int NOT NULL,
     id_sousFaction int DEFAULT NULL,
     nom_trait varchar(255) NOT NULL,
-    desc_trait varchar(255) DEFAULT NULL,
+    desc_trait varchar(500) DEFAULT NULL,
     FOREIGN KEY(id_faction) REFERENCES Faction(num_faction),
     FOREIGN KEY(id_sousFaction) REFERENCES SousFaction(num_sousFaction)
 );
 
 -- -------------------------
-
 CREATE TABLE Aptitude (
     num_apti int PRIMARY KEY AUTO_INCREMENT,
     id_faction int NOT NULL,
@@ -82,6 +81,17 @@ CREATE TABLE Unité (
     FOREIGN KEY(faction_id_unit) REFERENCES Faction(num_faction),
     FOREIGN KEY(trait_unit) REFERENCES Trait(num_trait),
     FOREIGN KEY(sousFaction_unit) REFERENCES SousFaction(num_sousFaction)
+);
+
+-- -------------------------
+CREATE TABLE AptitudeLiaison (
+    id_apti int NOT NULL,
+    id_unit int NOT NULL,
+    nom_apt varchar(255) DEFAULT NULL,
+    nom_unit varchar(255) DEFAULT NULL,
+    PRIMARY KEY(id_apti, id_unit),
+    FOREIGN KEY(id_apti) REFERENCES Aptitude(num_apti),
+    FOREIGN KEY(id_unit) REFERENCES Unité(numéro_unit)
 );
 
 -- -----------------------
@@ -124,12 +134,37 @@ INSERT INTO Faction(nom_faction, alliance_faction) VALUES ("Nécrons", "Xeno"), 
 INSERT INTO SousFaction(id_faction, nom_sousFaction) VALUES (1, "Neutre");
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Novokh", nom_faction FROM Faction WHERE num_faction = 1; 
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Szarekhan", nom_faction FROM Faction WHERE num_faction = 1;
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Mephrit", nom_faction FROM Faction WHERE num_faction = 1;
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Nephrekh", nom_faction FROM Faction WHERE num_faction = 1;
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Nihilakh", nom_faction FROM Faction WHERE num_faction = 1;
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Sautekh", nom_faction FROM Faction WHERE num_faction = 1;
 -- Insertion des Unités
 INSERT INTO Unité(faction_id_unit, personnage_unit, nom_unit, nomFaction_unit, point_unit, min_unit, max_unit) VALUES (1, false, "Guerrier Nécrons", "Nécrons", 13, 10, 20), (1, false, "Destroyer Skorpek", "Nécron", 45, 3, 6);
 -- Insertion des traits
 INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
 SELECT id_faction, "Fureur de sang", num_sousFaction, "Chaque fois que ce Seigneur de guerre fait une attaque de mêlée, un jet de blessure non modifié de 6 inflige 1 blessur mortelle à la cible en plus de tout autre dégât normal."
-FROM SousFaction WHERE nom_sousFaction = "Novokh";
+FROM SousFaction 
+WHERE nom_sousFaction = "Novokh";
+INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
+SELECT id_faction, "La volonté du triarcat", num_sousFaction, "Si votre Seigneur de Guerre a ce trait de seigneur de guerre, quand vous assignez des protocoles de commandement pour la bataille, vous pouvez choisir quatre protocole au lieu de cinq, et l'un des protocoles de commandement choisi peut être assigné à deux rounds de bataille au lieu d'un seul."
+FROM SousFaction 
+WHERE nom_sousFaction = "Szarekhan";
+INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
+SELECT id_faction, "Tyran sans merci", num_sousFaction, "Ajoutez 1 aux caractéristiques de Force et d'Attaques de ce Seigneur de Guerre."
+FROM SousFaction 
+WHERE nom_sousFaction = "Mephrit";
+INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
+SELECT id_faction, "Peau de dieu vivant", num_sousFaction, "Chaque fois qu'une attaque est faite contre ce Seigneur de Guerre, soustrayez 1 au jet de touche de l'attaque."
+FROM SousFaction 
+WHERE nom_sousFaction = "Nephrekh";
+INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
+SELECT id_faction, "Frappe précognitive", num_sousFaction, "Au début de la phase de combat, si ce Seigneur de Guerre est à portée d'engagement d'une unité ennemie, il peut combattre en premier à cette phase."
+FROM SousFaction 
+WHERE nom_sousFaction = "Nihilakh";
+INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
+SELECT id_faction, "", num_sousFaction, ""
+FROM SousFaction 
+WHERE nom_sousFaction = "Sautekh";
 -- Insertion des Aptitudes
 INSERT INTO Aptitude(id_faction, id_sousFaction, nom_apti) VALUES (1, 2, "Test");
 INSERT INTO Aptitude(id_faction, nom_apti) VALUES (1, "Test2");
