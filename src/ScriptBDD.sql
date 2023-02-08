@@ -1,6 +1,7 @@
 SET FOREIGN_KEY_CHECKS=0;
 
 -- Suppression des Tableaux
+drop table if exists ArmePrise;
 drop table if exists SortPris;
 drop table if exists UnitéPrise;
 drop table if exists Liste;
@@ -8,6 +9,8 @@ drop table if exists Sort;
 drop table if exists Reliques;
 drop table if exists AptitudeLiaison;
 drop table if exists Aptitude;
+drop table if exists ArmeLiaison;
+drop table if exists Arme;
 drop table if exists Unité;
 drop table if exists Trait;
 drop table if exists SousFaction;
@@ -79,16 +82,53 @@ CREATE TABLE Unité (
     min_unit int NOT NULL,
     max_unit int NOT NULL,
     nombre_sort int DEFAULT NULL,
+    mouvement_unit int NOT NULL,
+    cc_unit int NOT NULL,
+    ct_unit int NOT NULL,
+    force_unit int NOT NULL,
+    endurance_unit int NOT NULL,
+    pv_unit int NOT NULL,
+    attaque_unit int NOT NULL,
+    cd_unit int NOT NULL,
+    sv_unit int NOT NULL,
     FOREIGN KEY(faction_id_unit) REFERENCES Faction(num_faction),
     FOREIGN KEY(trait_unit) REFERENCES Trait(num_trait),
     FOREIGN KEY(sousFaction_unit) REFERENCES SousFaction(num_sousFaction)
 );
 
 -- -------------------------
+CREATE TABLE Arme (
+    num_arme int NOT NULL AUTO_INCREMENT,
+    id_unit int NOT NULL,
+    nom_arme varchar(255) NOT NULL,
+    portée_arme int DEFAULT NULL,
+    melée_arme BOOLEAN NOT NULL,
+    force_arme int NOT NULL,
+    pa_arme int NOT NULL,
+    dégat_arme int NOT NULL,
+    aptitude_arme varchar(500) DEFAULT NULL,
+    point_arme int DEFAULT NULL,
+    unique_arme BOOLEAN DEFAULT true,
+    arme_relique BOOLEAN DEFAULT false, 
+    trancheFig_arme int DEFAULT NULL,
+    PRIMARY KEY(num_arme, id_unit),
+    FOREIGN KEY(id_unit) REFERENCES Unité(numéro_unit)
+);
+
+-- -------------------------
+CREATE TABLE ArmeLiaison (
+    id_arme int NOT NULL,
+    id_unit int NOT NULL,
+    PRIMARY KEY(id_arme, id_unit),
+    FOREIGN KEY(id_arme) REFERENCES Arme(num_arme),
+    FOREIGN KEY(id_unit) REFERENCES Unité(numéro_unit)
+);
+
+-- -------------------------
 CREATE TABLE AptitudeLiaison (
     id_apti int NOT NULL,
     id_unit int NOT NULL,
-    nom_apt varchar(255) DEFAULT NULL,
+    nom_apti varchar(255) DEFAULT NULL,
     nom_unit varchar(255) DEFAULT NULL,
     PRIMARY KEY(id_apti, id_unit),
     FOREIGN KEY(id_apti) REFERENCES Aptitude(num_apti),
@@ -135,9 +175,22 @@ CREATE TABLE UnitéPrise (
 CREATE TABLE SortPris (
     id_unitchoisie int NOT NULL,
     id_sort int NOT NULL,
+    id_liste int NOT NULL,
     PRIMARY KEY(id_unitchoisie, id_sort),
     FOREIGN KEY(id_sort) REFERENCES Sort(num_sort),
-    FOREIGN KEY(id_unitchoisie) REFERENCES UnitéPrise(id_unitPris)
+    FOREIGN KEY(id_unitchoisie) REFERENCES UnitéPrise(id_unitPris),
+    FOREIGN KEY(id_liste) REFERENCES Liste(num_liste)
+);
+
+-- -----------------------
+CREATE TABLE ArmePrise (
+    id_unitchoisie int NOT NULL,
+    id_arme int NOT NULL,
+    id_liste int NOT NULL,
+    PRIMARY KEY(id_unitchoisie, id_arme),
+    FOREIGN KEY(id_unitchoisie) REFERENCES UnitéPrise(id_unitPris),
+    FOREIGN KEY(id_arme) REFERENCES Arme(num_arme),
+    FOREIGN KEY(id_liste) REFERENCES Liste(num_liste)
 );
 
 -- Insértion dans les tableaux
@@ -151,8 +204,6 @@ INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_fac
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Nephrekh", nom_faction FROM Faction WHERE num_faction = 1;
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Nihilakh", nom_faction FROM Faction WHERE num_faction = 1;
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Sautekh", nom_faction FROM Faction WHERE num_faction = 1;
--- Insertion des Unités
-INSERT INTO Unité(faction_id_unit, personnage_unit, nom_unit, nomFaction_unit, point_unit, min_unit, max_unit) VALUES (1, false, "Guerrier Nécrons", "Nécrons", 13, 10, 20), (1, false, "Destroyer Skorpek", "Nécron", 45, 3, 6);
 -- Insertion des traits
 INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
 SELECT id_faction, "Fureur de sang", num_sousFaction, "Chaque fois que ce Seigneur de guerre fait une attaque de mêlée, un jet de blessure non modifié de 6 inflige 1 blessure mortelle à la cible en plus de tout autre dégât normal."
@@ -195,6 +246,22 @@ INSERT INTO Aptitude(id_faction, id_sousFaction, nom_apti, desc_apti) VALUES (1,
 INSERT INTO Aptitude(id_faction, nom_apti, desc_apti) VALUES (1, "Protocole de réanimation", "Chaque fois que les protocoles de réanimation d'une unité se déclenche, effectuez des jets de protocole de réanimation pour cette unité en lançant un nombre de D6 égal à la caractéristiques de PV combinée de toutes les figurines en train de se réassembler. Chaque jet de protocole de réanimation de 5+ est placé dans un pool. Un jet de protocole de réanimation ne peut jamais être modifié par plus de -1 ou +1."),
 (1, "Métal organique", "Au début de votre phase de Commandement, chaque figurine de cette unité regagne 1 PV perdue."),
 (1, "Translocation dimensionnelle", "Au déploiement, vous pouvez placer cette unité dans une dimension hyperspatiale au lieu de la placer sur le champ de bataille. Dans ce cas, lors de l'étape Renforts de l'une de vos phases de mouvement, vous pouvez placer cette unité n'importe où sur le champ de bataille à une distance de plus de 9 pouce de toute figurine ennemi."),
-(1, "Rites de réanimation", "À votre phase de commandement, vous pouvez choisir une unité amie NECRONS BASE à 6 pouce de cette figurine. Une figurine détruit de cette unité est réanimé. Si l'unité sélectionnée est une unité Guerrier Nécrons, D3 modèles détruits de cette unité sont réanimés à la place. Chaque unité ne peut être sélectionnée pour cette capacité qu'une fois par phase.");
+(1, "Rites de réanimation", "À votre phase de commandement, vous pouvez choisir une unité amie NECRONS BASE à 6 pouce de cette figurine. Une figurine détruit de cette unité est réanimé. Si l'unité sélectionnée est une unité Guerrier Nécrons, D3 modèles détruits de cette unité sont réanimés à la place. Chaque unité ne peut être sélectionnée pour cette capacité qu'une fois par phase."),
+(1 , "Surchargeur Empyréen (Aura)", "Tant qu'une unité de PSYKER ennemie est à 12 pouce de cette figurine, à chaque fois qu'un test de Psychique est effectué pour cette unité, elle subit les Périls du Warp sur tout jet de dé qui inclut un double, au lieu d'un double 1 ou un double 6."),
+(1 , "Manipulateur d'énergie atomique", "Lors de la phase de combat, si cette figurine détruit un ou plusieurs figurines ennemies, alors à la fin de cette phase il peut utiliser sa capacité Augmentation mécanique comme si c'était la fin de votre phase de mouvement."),
+(1, "Augmentation mécanique", "A la fin de votre phase de mouvement, vous pouvez sélectionner une unité amie NECRONS BASE à 6 pouce de cette figurine. Si vous le faites, lancez un D3 et consultez le tableau ci-dessous : \n 1. Jusqu'à la fin de la bataille, ajoutez 1 à la caractéristique de Force des figurines de cette unité. \n 2. Jusqu'à la fin de la bataille, ajoutez 1 à la caractéristique d'endurance des figurines de cette unité. \n 3. Jusqu'à la fin de la bataille, améliorez de 1 la caractéristique de capacité de tir des figurines de cette unité."),
+(1, "Illuminor", "Cette figurine peut utiliser sa capacité Rites de réanimation une fois de plus par tour.");
+-- Insertion des Unités
+INSERT INTO Unité(faction_id_unit, sousFaction_unit, personnage_unit, trait_unit, nom_unit, nomFaction_unit, point_unit, min_unit, max_unit, mouvement_unit, cc_unit, ct_unit, force_unit, endurance_unit, pv_unit, attaque_unit, cd_unit, sv_unit)
+SELECT num_faction, 1, true, 7, "Illuminor Szeras", nom_faction, 160, 1, 1, 8, 3, 3, 6, 6, 7, 4, 10, 3
+FROM Faction 
+WHERE num_faction = 1;
+-- Insertion des armes
+
+-- Insertion des Aptitudes
+INSERT INTO AptitudeLiaison(id_apti, id_unit, nom_apti, nom_unit)
+SELECT num_apti, numéro_unit, nom_apti, nom_unit
+FROM Aptitude, Unité
+WHERE nom_unit = "Illuminor Szeras" AND nom_apti = "Métal organique";
 -- Insertion des sorts
 INSERT INTO Sort(id_faction, nom_sort) VALUES (2, "Death");
