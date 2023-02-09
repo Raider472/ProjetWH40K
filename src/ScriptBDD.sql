@@ -1,6 +1,7 @@
 SET FOREIGN_KEY_CHECKS=0;
 
 -- Suppression des Tableaux
+drop table if exists EquipementPris;
 drop table if exists ArmePrise;
 drop table if exists SortPris;
 drop table if exists UnitéPrise;
@@ -10,7 +11,9 @@ drop table if exists Reliques;
 drop table if exists AptitudeLiaison;
 drop table if exists Aptitude;
 drop table if exists ArmeLiaison;
+drop table if exists EquipementLiaison;
 drop table if exists Arme;
+drop table if exists Equipement;
 drop table if exists Unité;
 drop table if exists Trait;
 drop table if exists SousFaction;
@@ -102,16 +105,25 @@ CREATE TABLE Arme (
     nom_arme varchar(255) NOT NULL,
     id_faction int NOT NULL,
     portée_arme int DEFAULT NULL,
-    melée_arme BOOLEAN NOT NULL,
     type_arme varchar(255) NOT NULL,
-    force_arme int NOT NULL,
+    force_arme varchar(255) NOT NULL,
     pa_arme int NOT NULL,
     dégat_arme varchar(255) NOT NULL,
     aptitude_arme varchar(500) DEFAULT NULL,
     point_arme int DEFAULT NULL,
     switchable_arme BOOLEAN DEFAULT false,
-    arme_relique BOOLEAN DEFAULT false, 
     trancheFig_arme int DEFAULT NULL,
+    FOREIGN KEY(id_faction) REFERENCES Faction(num_faction)
+);
+
+-- -------------------------
+CREATE TABLE Equipement (
+    num_equipement int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nom_equipement varchar(255) NOT NULL,
+    id_faction int NOT NULL,
+    desc_equipement varchar(750) DEFAULT NULL,
+    switchable_equipement BOOLEAN DEFAULT false,
+    point_equipement int DEFAULT NULL,
     FOREIGN KEY(id_faction) REFERENCES Faction(num_faction)
 );
 
@@ -123,6 +135,17 @@ CREATE TABLE ArmeLiaison (
     nom_unit varchar(255) DEFAULT NULL,
     PRIMARY KEY(id_arme, id_unit),
     FOREIGN KEY(id_arme) REFERENCES Arme(num_arme),
+    FOREIGN KEY(id_unit) REFERENCES Unité(numéro_unit)
+);
+
+-- -------------------------
+CREATE TABLE EquipementLiaison (
+    id_equipement int NOT NULL,
+    id_unit int NOT NULL,
+    nom_equipement varchar(255) DEFAULT NULL,
+    nom_unit varchar(255) DEFAULT NULL,
+    PRIMARY KEY(id_equipement, id_unit),
+    FOREIGN KEY(id_equipement) REFERENCES Equipement(num_equipement),
     FOREIGN KEY(id_unit) REFERENCES Unité(numéro_unit)
 );
 
@@ -142,8 +165,13 @@ CREATE TABLE Reliques (
     num_relique int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_faction int NOT NULL,
     nom_relique varchar(255) NOT NULL,
-    desc_relique varchar(255) DEFAULT NULL,
+    desc_relique varchar(750) DEFAULT NULL,
+    portée_relique int DEFAULT NULL,
     type_relique varchar(255) NOT NULL,
+    force_relique int DEFAULT NULL,
+    pa_relique int DEFAULT NULL,
+    dégat_relique varchar(255) DEFAULT NULL,
+    aptitude_relique varchar(255) DEFAULT NULL,
     FOREIGN KEY(id_faction) REFERENCES Faction(num_faction)
 );
 
@@ -192,6 +220,17 @@ CREATE TABLE ArmePrise (
     PRIMARY KEY(id_unitchoisie, id_arme),
     FOREIGN KEY(id_unitchoisie) REFERENCES UnitéPrise(id_unitPris),
     FOREIGN KEY(id_arme) REFERENCES Arme(num_arme),
+    FOREIGN KEY(id_liste) REFERENCES Liste(num_liste)
+);
+
+-- -----------------------
+CREATE TABLE EquipementPris (
+    id_unitchoisie int NOT NULL,
+    id_equipement int NOT NULL,
+    id_liste int NOT NULL,
+    PRIMARY KEY(id_unitchoisie, id_equipement),
+    FOREIGN KEY(id_unitchoisie) REFERENCES UnitéPrise(id_unitPris),
+    FOREIGN KEY(id_equipement) REFERENCES Equipement(num_equipement),
     FOREIGN KEY(id_liste) REFERENCES Liste(num_liste)
 );
 
@@ -265,12 +304,24 @@ FROM Faction
 WHERE num_faction = 1;
 
 -- Insertion des armes
-INSERT INTO Arme(nom_arme, id_faction, portée_arme, melée_arme, type_arme, force_arme, pa_arme, dégat_arme)
-VALUES("Lance Spectrale (tir)", 1, 36, false, "Assaut D3", 8, -4, "D6");
-INSERT INTO Arme(nom_arme, id_faction, melée_arme, type_arme, force_arme, pa_arme, dégat_arme)
-VALUES("Lance Spectrale (mêlée)", 1, true, "mêlée", 6, -4, "2");
-INSERT INTO Arme(nom_arme, id_faction, melée_arme, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme)
-VALUES("Jambes empaleuses", 1, true, "mêlée", 6, -2, "1", "Chaque fois que le porteur combat, il fait 2 attaques supplémentaire avec cette arme.");
+INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme)
+VALUES("Lance Spectrale (tir)", 1, 36, "Assaut D3", "8", -4, "D6");
+INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme)
+VALUES("Lance Spectrale (mêlée)", 1, "mêlée", "util.", -4, "2");
+INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme)
+VALUES("Jambes empaleuses", 1, "mêlée", "util.", -2, "1", "Chaque fois que le porteur combat, il fait 2 attaques supplémentaire avec cette arme.");
+
+-- Insertion des equipements
+
+
+-- Insertion des Reliques
+INSERT INTO Reliques(id_faction, nom_relique, type_relique, desc_relique)
+VALUES(1, "L'orbe d'éternité", "Equipement", "Figurine avec un orbe de résurrection uniquement. Cette Relique remplace un orbe de résurrection. Une fois par bataille, lors de votre phase de commandement, le porteur peut utiliser cette Relique. S'il le fait, choisissez une unité amie de <DYNASTIE> à 6 pouce du porteur qui n'est pas à sa force de départ et dont les protocoles de réanimation n'ont pas été mis en œuvre pendant cette phase. Les protocoles de réanimation de cette unité sont promulgués, et chaque modèle détruit de cette unité commence à se réassembler. Chaque fois qu'un jet de protocole de réanimation est effectué pour ces protocoles de réanimation, ajoutez 1 au résultat.");
+INSERT INTO Reliques(id_faction, nom_relique, portée_relique, type_relique, force_relique, pa_relique, dégat_relique, aptitude_relique)
+VALUES(1, "La flèche d'infinité", 120, "Assaut 1", 16, -5, "6", "Le porteur ne peut tirer qu'une seule fois avec cette arme qu'une fois par bataille.");
+INSERT INTO Reliques(id_faction, nom_relique, type_relique, desc_relique)
+VALUES(1, "La cassette de nanoscarabées", "Aptitude supplémentaire", "Chaque fois que le porteur utilise sa capacité Métal Organique, il récupère 1 blessure perdue supplémentaire.");
+
 -- Insertion des Liaisons d'armes
 INSERT INTO ArmeLiaison(id_arme, id_unit, nom_arme, nom_unit)
 SELECT num_arme, numéro_unit, nom_arme, nom_unit
