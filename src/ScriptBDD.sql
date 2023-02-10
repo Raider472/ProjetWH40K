@@ -316,7 +316,8 @@ INSERT INTO Aptitude(id_faction, nom_apti, desc_apti) VALUES (1, "Protocole de r
 (1, "Illuminor", "Cette figurine peut utiliser sa capacité Rites de réanimation une fois de plus par tour."),
 (1, "Progression implacable", "Tant qu'une unité amie DYNASTYIE BASE se trouve dans un rayon de 6 pouce de cette figurine, chaque fois que cette unité est sélectionnée pour effectuer un Mouvement ou une Avance Normale, jusqu'à la fin de la phase, ajoutez 1 pouce à la caractéristique de Mouvement des figurines de cette unité."),
 (1, "Disrupteur de phase", "Cette figurine à une sauvegarde invulnérable de 4+"),
-(1, "Que ma volonté s'accomplisse", "Lors de votre phase de commandement, vous pouvez choisir une unité amie de DYNASTIE BASE dans un rayon de 9 pouce de cette figurine. Jusqu'au début de votre prochaine phase de commandement, chaque fois qu'une figurine de cette unité effectue une attaque, ajoutez 1 au jet de touche de cette attaque. Chaque unité ne peut être sélectionnée pour cette capacité qu'une fois par phase.");
+(1, "Que ma volonté s'accomplisse", "Lors de votre phase de commandement, vous pouvez choisir une unité amie de DYNASTIE BASE dans un rayon de 9 pouce de cette figurine. Jusqu'au début de votre prochaine phase de commandement, chaque fois qu'une figurine de cette unité effectue une attaque, ajoutez 1 au jet de touche de cette attaque. Chaque unité ne peut être sélectionnée pour cette capacité qu'une fois par phase."),
+(1, "Leur nombre est légion", "Relancez les jets de Protocoles de Réanimation de 1 pour cette unité.");
 
 -- Insertion des Unités ---------------------------------------
 INSERT INTO Unité(faction_id_unit, sousFaction_unit, personnage_unit, trait_unit, nom_unit, nomFaction_unit, point_unit, min_unit, max_unit, mouvement_unit, cc_unit, ct_unit, force_unit, endurance_unit, pv_unit, attaque_unit, cd_unit, sv_unit)
@@ -326,6 +327,11 @@ WHERE num_faction = 1;
 
 INSERT INTO Unité(faction_id_unit, personnage_unit, nom_unit, nomFaction_unit, point_unit, min_unit, max_unit, mouvement_unit, cc_unit, ct_unit, force_unit, endurance_unit, pv_unit, attaque_unit, cd_unit, sv_unit)
 SELECT num_faction, true, "Tétraque", nom_faction, 95, 1, 1, 6, 2, 2, 5, 5, 5, 4, 10, 3
+FROM Faction 
+WHERE num_faction = 1;
+
+INSERT INTO Unité(faction_id_unit, personnage_unit, nom_unit, nomFaction_unit, point_unit, min_unit, max_unit, mouvement_unit, cc_unit, ct_unit, force_unit, endurance_unit, pv_unit, attaque_unit, cd_unit, sv_unit)
+SELECT num_faction, false, "Guerriers Nécrons", nom_faction, 13, 10, 20, 5, 3, 3, 4, 4, 1, 1, 10, 4
 FROM Faction 
 WHERE num_faction = 1;
 
@@ -340,6 +346,12 @@ VALUES("Arbalète à tachyons", 1, 120, "Assaut 1", "12", -5, "D6", "Le porteur 
 
 INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme)
 VALUES("Bâton de lumière (Tir)", 1, 18, "Assaut 3", "5", -2, "1", true);
+
+INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme, base_arme)
+VALUES("Écorcheur Gauss", 1, 24, "Tir Rapide 1", "4", -1, "1", true, true);
+
+INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme)
+VALUES("Faucheuse Gauss", 1, 12, "Assaut 2", "5", -2, "1", true);
 
 -- Mêlée ++++++++++++++++++++++++++++++++++++++++++++
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme)
@@ -478,6 +490,16 @@ SELECT num_arme, numéro_unit, nom_arme, nom_unit
 FROM Arme, Unité
 WHERE nom_unit = "Tétraque" AND nom_arme = "Fauchard";
 
+INSERT INTO ArmeLiaison(id_arme, id_unit, nom_arme, nom_unit)
+SELECT num_arme, numéro_unit, nom_arme, nom_unit
+FROM Arme, Unité
+WHERE nom_unit = "Guerriers Nécrons" AND nom_arme = "Écorcheur Gauss";
+
+INSERT INTO ArmeLiaison(id_arme, id_unit, nom_arme, nom_unit)
+SELECT num_arme, numéro_unit, nom_arme, nom_unit
+FROM Arme, Unité
+WHERE nom_unit = "Guerriers Nécrons" AND nom_arme = "Faucheuse Gauss";
+
 -- Insertion des Liaisons d'Aptitudes ---------------------------------------
 INSERT INTO AptitudeLiaison(id_apti, id_unit, nom_apti, nom_unit)
 SELECT num_apti, numéro_unit, nom_apti, nom_unit
@@ -528,6 +550,16 @@ INSERT INTO AptitudeLiaison(id_apti, id_unit, nom_apti, nom_unit)
 SELECT num_apti, numéro_unit, nom_apti, nom_unit
 FROM Aptitude, Unité
 WHERE nom_unit = "Tétraque" AND nom_apti = "Que ma volonté s'accomplisse";
+
+INSERT INTO AptitudeLiaison(id_apti, id_unit, nom_apti, nom_unit)
+SELECT num_apti, numéro_unit, nom_apti, nom_unit
+FROM Aptitude, Unité
+WHERE nom_unit = "Guerriers Nécrons" AND nom_apti = "Protocole de réanimation";
+
+INSERT INTO AptitudeLiaison(id_apti, id_unit, nom_apti, nom_unit)
+SELECT num_apti, numéro_unit, nom_apti, nom_unit
+FROM Aptitude, Unité
+WHERE nom_unit = "Guerriers Nécrons" AND nom_apti = "Leur nombre est légion";
 
 -- Insertion des Liaisons d'Equipement ---------------------------------------
 INSERT INTO EquipementLiaison(id_equipement, id_unit, nom_equipement, nom_unit)
