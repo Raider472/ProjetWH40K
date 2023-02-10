@@ -321,7 +321,10 @@ INSERT INTO Reliques(id_faction, nom_relique, portée_relique, type_relique, for
 VALUES(1, "La flèche d'infinité", 120, "Assaut 1", 16, -5, "6", "Le porteur ne peut tirer qu'une seule fois avec cette arme qu'une fois par bataille.");
 INSERT INTO Reliques(id_faction, nom_relique, type_relique, desc_relique)
 VALUES(1, "La cassette de nanoscarabées", "Aptitude supplémentaire", "Chaque fois que le porteur utilise sa capacité Métal Organique, il récupère 1 blessure perdue supplémentaire.");
-
+INSERT INTO Reliques(id_faction, nom_relique, type_relique, desc_relique)
+VALUES(1, "Voile de ténèbres", "Aptitude supplémentaire", "Une fois par bataille, lors de votre phase de mouvement, le porteur peut utiliser cette Relique. S'il le fait, l'unité du porteur et jusqu'à une unité amie <DYNASTY> BASE dans un rayon de 3 pouce du porteur peuvent être retirées du champ de bataille et remises en place n'importe où sur le champ de bataille à plus de 9 pouce de tout modèle ennemi. Si deux unités sont remises en place sur le champ de bataille en utilisant cette Relique, les deux unités doivent être placées intégralement à moins de 6 pouce l'une de l'autre.");
+INSERT INTO Reliques(id_faction, nom_relique, portée_relique, type_relique, force_relique, pa_relique, dégat_relique, aptitude_relique)
+VALUES(1, "Bâton voltaique (tir)", 18, "Assaut 4", 6, -2, "2", "Chaque fois qu'une attaque est effectuée avec cette arme, un jet de touche de 6 non modifié permet d'obtenir 2 touches supplémentaires.");
 -- Insertion des Liaisons d'armes
 INSERT INTO ArmeLiaison(id_arme, id_unit, nom_arme, nom_unit)
 SELECT num_arme, numéro_unit, nom_arme, nom_unit
