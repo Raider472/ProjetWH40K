@@ -1,0 +1,177 @@
+
+body {
+    margin: 0;
+}
+
+header {
+    background-image: url(../public/40kheader.jpg);
+    padding-top: 1%;
+}
+
+header h1 {
+    text-align: center;
+    margin: 1em 0 1em 0;
+    padding: 0.4em;
+    border-bottom: 0.1em solid gray;
+    font-size: 2.5em;
+    color: whitesmoke;
+}
+
+main {
+    margin: 0 2% 0 2%;
+}
+
+main h2 {
+    font-size: 2em;
+}
+
+.creationListecss {
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1em;
+}
+
+.buttonListe {
+    display: flex;
+    gap: 4em;
+}
+
+.faction_selection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 1.5em;
+}
+
+.TexteSousFaction {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.TexteSousFaction h2 {
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.TexteSousFaction h3 {
+    text-align: center;
+    font-size: 2em;
+}
+
+.TexteSousFaction p {
+    text-align: justify;
+}
+
+.selectUnités h3 {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.selectUnités select {
+    width: 100%;
+    background-color: #BFC4C7;
+}
+
+.selectUnités option {
+    background-color: #d6dadd;
+}
+
+.seigneur_guerre {
+    margin-top: 0.8em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 99%;
+}
+
+.choixEquipement h3 {
+    border-bottom: 2px solid gray;
+}
+
+.optionEquip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#div_bouton_unite {
+    text-align: right;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+}
+
+#btn_creationListe {
+    background-color: #00ad3a;
+    border-top: 0.2em solid #007928;
+    border-left: 0.2em solid #007928;
+    border-right: 0.2em solid #11c04b;
+    border-bottom: 0.2em solid #11c04b;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#btn_creationListe:hover {
+    background-color: #1aff66;
+    border-radius: 5px;
+}
+
+#btn_creationListe:active {
+    border-top: 0.2em solid #11c04b;
+    border-left: 0.2em solid #11c04b;
+    border-right: 0.2em solid #007928;
+    border-bottom: 0.2em solid #007928;
+    border-radius: 5px;
+}
+
+#btn_suppressionListe {
+    background-color: #660000;
+    border-top: 0.2em solid #330000;
+    border-left: 0.2em solid #330000;
+    border-right: 0.2em solid #990000;
+    border-bottom: 0.2em solid #990000;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#btn_suppressionListe:hover {
+    background-color: #cc0000;
+    border-radius: 5px;
+}
+
+#btn_suppressionListe:active {
+    border-top: 0.2em solid #990000;
+    border-left: 0.2em solid #990000;
+    border-right: 0.2em solid #330000;
+    border-bottom: 0.2em solid #330000;
+    border-radius: 5px;
+}
+
+#div_bouton_unite input[type=button] {
+    background-color: #0066ff;
+    border-top: 0.2em solid #003380;
+    border-left: 0.2em solid #003380;
+    border-right: 0.2em solid #1a75ff;
+    border-bottom: 0.2em solid #1a75ff;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#div_bouton_unite input[type=button]:hover {
+    background-color: #66a3ff;
+    border-radius: 5px;
+}
+
+#div_bouton_unite input[type=button]:active {
+    border-top: 0.2em solid #1a75ff;
+    border-left: 0.2em solid #1a75ff;
+    border-right: 0.2em solid #003380;
+    border-bottom: 0.2em solid #003380;
+    border-radius: 5px;
+}
+
+.seigneur_guerre {
+    text-align: right;
+}

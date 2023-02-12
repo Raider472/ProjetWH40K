@@ -185,7 +185,8 @@ CREATE TABLE Reliques (
 -- -----------------------
 CREATE TABLE Liste (
     num_liste int PRIMARY KEY NOT NULL,
-    nom_liste varchar(255) NOT NULL
+    nom_liste varchar(255) NOT NULL,
+    faction_liste varchar(255) NOT NULL
 );
 
 -- ------------------------
