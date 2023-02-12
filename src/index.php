@@ -11,8 +11,10 @@
       <h1>Créateur de liste WH40K</h1>
     </header>
     <main>
-      <?php
-        echo "Test ta maman 2";
+    <?php
+        require "connect.php";
+        $connexion = db_connect();
+        echo "<h1>BGUYHGFUYTGUYGUYYG</h1>";
       ?>
       <div id="div_selection_faction">
         <label for="select_faction">Faction</label>
