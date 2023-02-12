@@ -11,10 +11,20 @@
       <h1>Créateur de liste WH40K</h1>
     </header>
     <main>
-    <?php
+      <?php
         require "connect.php";
         $connexion = db_connect();
-        echo "<h1>BGUYHGFUYTGUYGUYYG</h1>";
+        $sql = "SELECT * FROM Unité";
+        $result = $connexion->query($sql);
+        while ($data = $result->fetch_object()) {
+          $users[] = $data;
+        }
+        foreach ($users as $user) {
+          echo "<br>";
+          echo $user->nom_unit . " | " . $user->type_unit;
+          echo "<br>";
+        }
+        echo "<br>"
       ?>
       <div id="div_selection_faction">
         <label for="select_faction">Faction</label>

@@ -1,7 +1,7 @@
 <?php
     function db_connect() {
         require "config.php";
-        $connection = new PDO($dsn, $username, $password, $option);
-        return $connection;
+        $connect = new mysqli($serverName, $userName, $password, $dbName);
+        return $connect;
     }
 ?>    
