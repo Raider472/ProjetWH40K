@@ -4,7 +4,7 @@ body {
 }
 
 header {
-    background-image: url(../public/40kheader.jpg);
+    background-image: url(assets/40kheader.jpg);
     padding-top: 1%;
 }
 
@@ -109,7 +109,18 @@ main h2 {
     font-size: 1.5em;
 }
 
+.traitSeigneur p {
+    color: red;
+    text-align: center;
+}
+
 .affichageListe {
+    align-items: center;
+}
+
+.boutonRadioTrait {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
