@@ -1,6 +1,9 @@
 
 body {
     margin: 0;
+    background-image: url(assets/40kbackgroundmain.jpg);
+    background-repeat: no-repeat;
+    background-size:  cover;
 }
 
 header {
@@ -63,6 +66,12 @@ main h2 {
 
 .selectUnités option {
     background-color: #d6dadd;
+}
+
+.divBoutonUnite {
+    text-align: right;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
 }
 
 .seigneur_guerre {
@@ -138,6 +147,11 @@ main h2 {
     padding-bottom: 1em;
 }
 
+.creationListecss div {
+    display: flex;
+    gap: 2em;
+}
+
 footer {
     color: white;
     text-align: center;
@@ -169,6 +183,32 @@ footer {
     border-left: 0.2em solid #11c04b;
     border-right: 0.2em solid #007928;
     border-bottom: 0.2em solid #007928;
+    border-radius: 5px;
+}
+
+#btn_annulerListe {
+    cursor: pointer;
+    width: 8rem;
+    height: 3rem;
+    background-color: #660000;
+    border-top: 0.2em solid #330000;
+    border-left: 0.2em solid #330000;
+    border-right: 0.2em solid #990000;
+    border-bottom: 0.2em solid #990000;
+    border-radius: 5px;
+    font-size: 1.4em;
+}
+
+#btn_annulerListe:hover {
+    background-color: #cc0000;
+    border-radius: 5px;
+}
+
+#btn_annulerListe:active {
+    border-top: 0.2em solid #990000;
+    border-left: 0.2em solid #990000;
+    border-right: 0.2em solid #330000;
+    border-bottom: 0.2em solid #330000;
     border-radius: 5px;
 }
 

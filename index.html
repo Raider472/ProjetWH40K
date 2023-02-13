@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!--ITC Novarese W01 Medium Fonts-->
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="src/style.css">
@@ -45,7 +45,7 @@
             <select id="select_unites" name="unites" size="15">
             </select>
           </div>
-          <div id="div_bouton_unite">
+          <div id="div_bouton_unite" class="divBoutonUnite">
             <input type="button" id="btn_ajouter" value="Sélectionner">
           </div>
           <div class="seigneur_guerre"> <!--Cette div est cacher au début et n'apparait seulement si le perso highlight est un personnage-->
@@ -141,7 +141,10 @@
         </div>
       </div>
       <div class="creationListecss">
-        <input type="button" id="btn_ajouterListe" value="Ajouter" >
+        <div>
+          <input type="button" id="btn_ajouterListe" value="Ajouter">
+          <input type="button" id="btn_annulerListe" value="Annuler">
+        </div>
       </div>
     </main>
     <footer>
