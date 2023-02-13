@@ -12,17 +12,6 @@
     </header>
     <main>
       <h2>Création d'une liste</h1>
-      <div class="creationListecss">
-        <div>
-          <select id="select_liste" name="liste">
-            <option value="">Veuillez créer ou choisir une liste</option>
-          </select>
-        </div>
-        <div class="buttonListe"> <!--Cette partie sera diviser en deux: le bouton créer en bas, le reste sur une nouvelle page affichage qui sera celle par defaut-->
-          <input type="button" id="btn_creationListe" value="Créer">
-          <input type="button" id="btn_suppressionListe" value="Supprimer">
-        </div>
-      </div>
       <div class="faction_selection">
         <div id="div_selection_faction">
           <label for="select_faction">Faction</label>
@@ -48,7 +37,7 @@
           Ajoutez 1 aux jets de charge pour les unités ayant ce code. \nChaque fois qu'une figurine ayant ce code fait une attaque de mêlée, si l'unité de la figurine a fait un mouvement de charge, a été chargée ou a accompli une Intervention Héroique à ce tour, améliorez de 1 la caractéristique de Pénétration d'armure de l'attaque. \nLorsque le protocole du Néant Avide devient actif pour votre armée, si toutes les unité de votre armée (à l'exception des unités DYNASTIC AGENT et C'TAN SHARD) possède ce code, vous pouvez sélectionner les deux directives de ce protocole de commande au lieu d'une seule.
         </p>
       </div>
-      <div id="div_ajout_unite">
+      <div id="div_ajout_unite" class="divAjoutUnité">
         <h2>Ajout d'unités</h2>
         <div class="selectionDunité">
           <div class="selectUnités">
@@ -73,28 +62,33 @@
         <div class="choixEquipement">
           <h3>Choix des équipements</h3>
           <div id="div_choix_equipement" class="optionEquip">
-            <div>
+            <div class="divOptionEquip">
               <div>
                 <label for="chk_test">Test</label>
                 <input type="checkbox" id="chk_test" value="test">
+                <input type="number" name="test" id="num_test" min="1" max="100" size="3">
               </div>
               <div>
                 <label for="chk_test2">Test</label>
                 <input type="checkbox" id="chk_test2" value="test">
+                <input type="number" name="test2" id="num_test2" min="1" max="100" size="3">
               </div>
               <div>
                 <label for="chk_test3">Test</label>
                 <input type="checkbox" id="chk_test3" value="test">
+                <input type="number" name="test3" id="num_test3" min="1" max="100" size="3">
               </div>
             </div>
-            <div>
+            <div class="divOptionEquip">
               <div>
                 <label for="chk_test4">Test</label>
                 <input type="checkbox" id="chk_test4" value="test">
+                <input type="number" name="test4" id="num_test4" min="1" max="100" size="3">
               </div>
               <div>
                 <label for="chk_test5">Test</label>
                 <input type="checkbox" id="chk_test5" value="test">
+                <input type="number" name="test5" id="num_test5" min="1" max="100" size="3">
               </div>
             </div>
           </div>
@@ -121,7 +115,7 @@
       </div>
       <div id="div_affichage_liste" class="affichageListe">
         <h2>Vue d'ensemble de la liste</h2>
-        <div id="div_liste_unité">
+        <div id="div_liste_unité" class="listeUnitAffichage">
           <h3>Liste des unités</h3>
           <select id="select_affichage_liste" name="affichage_liste" size="15"></select>
         </div>
@@ -134,20 +128,25 @@
         </div>
         <div id="div_sous_faction_affichage">
           <div>
-            <h3>Dinasty: </h3>
-            <h3 id="h3_nom_sous_faction">Novhok</h3>
+            <h3 id="h3_nom_faction_">Dinasty: </h3>
+            <h4 id="h4_nom_sous_faction">Novhok</h4>
           </div>
           <div>
-            <h4>Bonus de Dinasty</h4>
-            <p>je suis nul</p>
+            <h3>Bonus de Dinasty</h3>
+            <p id="p_bonus_sous_faction">je suis nul</p>
           </div>
         </div>
         <div>
           <h3>Pouvoir psychic</h3>
         </div>
-
+      </div>
+      <div class="creationListecss">
+        <input type="button" id="btn_ajouterListe" value="Ajouter" >
       </div>
     </main>
+    <footer>
+      <p>Crée par Gabriel NAE /Placeholder</p>
+    </footer>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

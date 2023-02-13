@@ -25,19 +25,6 @@ main h2 {
     font-size: 2em;
 }
 
-.creationListecss {
-    display: flex;
-    gap: 1em;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 1em;
-}
-
-.buttonListe {
-    display: flex;
-    gap: 4em;
-}
-
 .faction_selection {
     display: flex;
     flex-direction: row;
@@ -99,6 +86,12 @@ main h2 {
     gap: 1.5em;
 }
 
+.divOptionEquip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
 .choixEquipement p {
     color: red;
     text-align: center;
@@ -114,20 +107,69 @@ main h2 {
     text-align: center;
 }
 
-.affichageListe {
-    align-items: center;
-}
-
 .boutonRadioTrait {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#div_bouton_unite {
-    text-align: right;
-    padding-top: 0.3em;
-    padding-bottom: 0.3em;
+.divAjoutUnité {
+    padding-bottom: 1em;
+    border-bottom: 2px solid green;
+}
+
+.affichageListe h3 {
+    font-size: 1.5em;
+}
+
+.listeUnitAffichage select {
+    width: 100%;
+    background-color: #BFC4C7;
+}
+
+.listeUnitAffichage h3 {
+    text-align: center;
+}
+
+.creationListecss {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding-bottom: 1em;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    background-image: url(assets/40kheader.jpg);
+    border-top: 0.2em solid gray;
+    padding-bottom: 1%;
+}
+
+#btn_ajouterListe {
+    cursor: pointer;
+    width: 8rem;
+    height: 3rem;
+    background-color: #00ad3a;
+    border-top: 0.2em solid #007928;
+    border-left: 0.2em solid #007928;
+    border-right: 0.2em solid #11c04b;
+    border-bottom: 0.2em solid #11c04b;
+    border-radius: 5px;
+    font-size: 1.4em;
+}
+
+#btn_ajouterListe:hover {
+    background-color: #1aff66;
+    border-radius: 5px;
+}
+
+#btn_ajouterListe:active {
+    border-top: 0.2em solid #11c04b;
+    border-left: 0.2em solid #11c04b;
+    border-right: 0.2em solid #007928;
+    border-bottom: 0.2em solid #007928;
+    border-radius: 5px;
 }
 
 #btn_creationListe {
