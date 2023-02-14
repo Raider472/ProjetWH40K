@@ -1,5 +1,13 @@
+@font-face {
+    font-family: "Novarese";
+    src: url(assets/ITC_Novarese_W01_Medium.ttf);
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 body {
+    font-family: Novarese, monospace, Arial, Helvetica, sans-serif;
     margin: 0;
     background-image: url(assets/40kbackgroundmain.jpg);
     background-repeat: no-repeat;
@@ -33,6 +41,10 @@ main h2 {
     flex-direction: row;
     justify-content: space-evenly;
     font-size: 1.5em;
+}
+
+.faction_selection select {
+    font-family: Novarese, monospace, Arial, Helvetica, sans-serif;
 }
 
 .TexteSousFaction {
@@ -106,20 +118,53 @@ main h2 {
     text-align: center;
 }
 
+.descTrait {
+    text-align: center;
+}
+
 .traitSeigneur h3 {
     border-bottom: 2px solid gray;
     font-size: 1.5em;
 }
 
-.traitSeigneur p {
+.optionSortChoix {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.divSortEquip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    align-self: baseline;
+}
+
+.descriptionSort{
+    width: 20%;
+}
+
+.descriptionSort h4 {
+    text-align: center;
+}
+
+.lblErreur {
     color: red;
     text-align: center;
+}
+
+.choixSort h3 {
+    border-bottom: 2px solid gray;
+    font-size: 1.5em;
 }
 
 .boutonRadioTrait {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1em;
 }
 
 .divAjoutUnité {
@@ -160,7 +205,76 @@ footer {
     padding-bottom: 1%;
 }
 
+.tableUnit {
+    padding-top: 1em;
+}
+
+.tableEquip{
+    padding-top: 1em;
+}
+
+.tableUnit div {
+    display: flex;
+    justify-content: center;
+}
+
+.tableEquip div {
+    display: flex;
+    justify-content: center;
+}
+
+table.tab {
+    font-family: Novarese, monospace, Arial, Helvetica, sans-serif;
+    border: 3px solid gray;
+    background-color: #D6D6D6;
+    width: 90%;
+    height: 130px;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table.tab td, table.tab th {
+    border: 5px solid gray;
+}
+
+table.tab tbody td {
+font-size: 16px;
+}
+  
+table.tab tr:nth-child(even) {
+    background: #E3E3E3;
+}
+
+table.tab thead {
+    background: #2C2C2C;
+    border-bottom: 2px solid #444444;
+}
+
+table.tab thead th {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+}
+  
+table.tab tfoot td {
+font-size: 14px;
+}
+
+table.tab tfoot .links {
+text-align: right;
+}
+
+table.tab tfoot .links a{
+display: inline-block;
+background: #1C6EA4;
+color: #FFFFFF;
+padding: 2px 8px;
+border-radius: 5px;
+}
+
 #btn_ajouterListe {
+    font-family: Novarese, monospace, Arial, Helvetica, sans-serif;
     cursor: pointer;
     width: 8rem;
     height: 3rem;
@@ -187,6 +301,7 @@ footer {
 }
 
 #btn_annulerListe {
+    font-family: Novarese, monospace, Arial, Helvetica, sans-serif;
     cursor: pointer;
     width: 8rem;
     height: 3rem;
@@ -259,23 +374,25 @@ footer {
 }
 
 #div_bouton_unite input[type=button] {
-    background-color: #0066ff;
+    font-family: Novarese, monospace, Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    background-color: #1D5B99;
     border-top: 0.2em solid #003380;
     border-left: 0.2em solid #003380;
-    border-right: 0.2em solid #1a75ff;
-    border-bottom: 0.2em solid #1a75ff;
+    border-right: 0.2em solid #165FCC;
+    border-bottom: 0.2em solid #165FCC;
     border-radius: 5px;
     font-size: 1em;
 }
 
 #div_bouton_unite input[type=button]:hover {
-    background-color: #66a3ff;
+    background-color: #4380DB;
     border-radius: 5px;
 }
 
 #div_bouton_unite input[type=button]:active {
-    border-top: 0.2em solid #1a75ff;
-    border-left: 0.2em solid #1a75ff;
+    border-top: 0.2em solid #165FCC;
+    border-left: 0.2em solid #165FCC;
     border-right: 0.2em solid #003380;
     border-bottom: 0.2em solid #003380;
     border-radius: 5px;
