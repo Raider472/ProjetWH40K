@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/magic-input/dist/magic-input.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="src/assets/40kIcon.jpg">
     <title>Créateur de Liste WH40K</title>
@@ -52,11 +53,42 @@
           <div class="seigneur_guerre"> <!--Cette div est cacher au début et n'apparait seulement si le perso highlight est un personnage-->
             <div>
               <label for="chk_seigneur_guerre">Seigneur de guerre</label>
-              <input id="chk_seigneur_guerre" type="checkbox" value="trueSeigneur">
+              <input id="chk_seigneur_guerre" type="checkbox" value="trueSeigneur" class="mgc mgc-primary">
             </div>
             <div>
               <label for="chk_personnage_trait">Second seigneur de guerre</label>
-              <input id="chk_personnage_trait" type="checkbox" value="secondSeigneur">
+              <input id="chk_personnage_trait" type="checkbox" value="secondSeigneur" class="mgc mgc-primary">
+            </div>
+          </div>
+          <div id="div_tableau_unit" class="tableUnit">
+            <div>
+              <table class="tab">
+                <thead>
+                  <tr>
+                    <th>head1</th>
+                    <th>head2</th>
+                    <th>head3</th>
+                    <th>head4</th>
+                    <th>head1</th>
+                    <th>head2</th>
+                    <th>head3</th>
+                    <th>head4</th>
+                  </tr>
+                  </thead>
+                    <tbody>
+                    <tr>
+                      <td>cell1_1</td>
+                      <td>cell2_1</td>
+                      <td>cell3_1</td>
+                      <td>cell4_1</td>
+                      <td>cell1_1</td>
+                      <td>cell2_1</td>
+                      <td>cell3_1</td>
+                      <td>cell4_1</td>
+                    </tr>
+                    </tbody>
+                  </tr>
+                </table>
             </div>
           </div>
         </div>
@@ -66,52 +98,131 @@
             <div class="divOptionEquip">
               <div>
                 <label for="chk_test">Test</label>
-                <input type="checkbox" id="chk_test" value="test">
+                <input type="checkbox" id="chk_test" value="test" class="mgc mgc-primary">
                 <input type="number" name="test" id="num_test" min="1" max="100" size="3">
               </div>
               <div>
                 <label for="chk_test2">Test</label>
-                <input type="checkbox" id="chk_test2" value="test">
+                <input type="checkbox" id="chk_test2" value="test" class="mgc mgc-primary">
                 <input type="number" name="test2" id="num_test2" min="1" max="100" size="3">
               </div>
               <div>
                 <label for="chk_test3">Test</label>
-                <input type="checkbox" id="chk_test3" value="test">
+                <input type="checkbox" id="chk_test3" value="test" class="mgc mgc-primary">
                 <input type="number" name="test3" id="num_test3" min="1" max="100" size="3">
               </div>
             </div>
             <div class="divOptionEquip">
               <div>
                 <label for="chk_test4">Test</label>
-                <input type="checkbox" id="chk_test4" value="test">
+                <input type="checkbox" id="chk_test4" value="test" class="mgc mgc-primary">
                 <input type="number" name="test4" id="num_test4" min="1" max="100" size="3">
               </div>
               <div>
                 <label for="chk_test5">Test</label>
-                <input type="checkbox" id="chk_test5" value="test">
+                <input type="checkbox" id="chk_test5" value="test" class="mgc mgc-primary">
                 <input type="number" name="test5" id="num_test5" min="1" max="100" size="3">
               </div>
             </div>
           </div>
           <p>armes incompatibles</p>
+          <div id="div_tableau_equip" class="tableEquip">
+            <div>
+              <table class="tab">
+                <thead>
+                  <tr>
+                    <th>head1</th>
+                    <th>head2</th>
+                    <th>head3</th>
+                    <th>head4</th>
+                    <th>head1</th>
+                    <th>head2</th>
+                    <th>head3</th>
+                    <th>head4</th>
+                  </tr>
+                  </thead>
+                    <tbody>
+                    <tr>
+                      <td>cell1_1</td>
+                      <td>cell2_1</td>
+                      <td>cell3_1</td>
+                      <td>cell4_1</td>
+                      <td>cell1_1</td>
+                      <td>cell2_1</td>
+                      <td>cell3_1</td>
+                      <td>cell4_1</td>
+                    </tr>
+                    </tbody>
+                  </tr>
+                </table>
+            </div>
+          </div>
         </div>
         <div id="div_choix_trait" class="traitSeigneur">
           <h3>Sélection du trait de seigneur de guerre</h3>
           <div class="boutonRadioTrait">
             <div>
               <label for="radio_test">Test1</label>
-              <input type="radio" id="radio_test" value="test" name="test">
+              <input type="radio" id="radio_test" value="test" name="test" class="mgr mgr-primary">
             </div>
             <div>
               <label for="radio_test2">test2</label>
-              <input type="radio" id="radio_test2" value="test2" name="test">
+              <input type="radio" id="radio_test2" value="test2" name="test" class="mgr mgr-primary">
             </div>
             <div>
               <label for="radio_test3">test3</label>
-              <input type="radio" id="radio_test3" value="test3" name="test">
+              <input type="radio" id="radio_test3" value="test3" name="test" class="mgr mgr-primary">
             </div>
           </div>
-          <p>Choisir trait</p>
+          <p class="lblErreur">Choisir trait</p>
+          <div class="descTrait">
+            <h4>Nom trait</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut nunc velit. Nullam sed mauris imperdiet, tempus mauris quis, suscipit odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum augue non mauris sodales, ac cursus justo cursus. Maecenas sollicitudin consequat turpis, quis volutpat lorem euismod at. Donec mollis tempus nulla suscipit varius. Duis tristique, dui in feugiat imperdiet, ipsum elit viverra mi, id finibus sapien lacus eu neque. Morbi pellentesque elementum urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut nulla tristique, pulvinar nulla eu, feugiat magna. 
+            </p>
+          </div>
+        </div>
+        <div id="div_choix_sort" class="choixSort">
+          <h3>Sélection des sorts</h3>
+          <div class="optionSortChoix">
+            <div class="divSortEquip">
+              <div>
+                <h4>Nom de Sort</h4>
+              </div>
+              <div>
+                <label for="chk_test1">Test</label>
+                <input type="checkbox" id="chk_test1" value="test" class="mgc mgc-primary">
+              </div>
+              <div>
+                <label for="chk_test21">Test</label>
+                <input type="checkbox" id="chk_test21" value="test" class="mgc mgc-primary">
+              </div>
+              <div>
+                <label for="chk_test31">Test</label>
+                <input type="checkbox" id="chk_test31" value="test" class="mgc mgc-primary">
+              </div>
+            </div>
+            <div class="descriptionSort">
+              <h4>Nom du sort</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut nunc velit. Nullam sed mauris imperdiet, tempus mauris quis, suscipit odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum augue non mauris sodales, ac cursus justo cursus. Maecenas sollicitudin consequat turpis, quis volutpat lorem euismod at. Donec mollis tempus nulla suscipit varius. Duis tristique, dui in feugiat imperdiet, ipsum elit viverra mi, id finibus sapien lacus eu neque. Morbi pellentesque elementum urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut nulla tristique, pulvinar nulla eu, feugiat magna. 
+              </p>
+            </div>
+            <div class="divSortEquip">
+              <div>
+                <h4>Nom de Sort</h4>
+              </div>
+              <div>
+                <label for="chk_test41">Test</label>
+                <input type="checkbox" id="chk_test41" value="test" class="mgc mgc-primary">
+              </div>
+              <div>
+                <label for="chk_test51">Test</label>
+                <input type="checkbox" id="chk_test51" value="test" class="mgc mgc-primary">
+              </div>
+            </div>
+          </div>
+          <p class="lblErreur">trop de sorts</p>
         </div>
         <div id="div_choix_relique" class="ReliqueSeigneur">
           <h3>Sélection de la relique</h3>
@@ -167,6 +278,7 @@
     </main>
     <footer>
       <p>Crée par Gabriel NAE /Placeholder</p>
+      <div>Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>is licensed by CC BY 3.0</div>
     </footer>
     <script type="module" src="/src/main.ts"></script>
   </body>
