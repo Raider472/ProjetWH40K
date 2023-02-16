@@ -48,6 +48,7 @@
             </select>
           </div>
           <div id="div_bouton_unite" class="divBoutonUnite">
+            <input type="button" id="btn_afficherUnit" value="Afficher l'Unité">
             <input type="button" id="btn_ajouter" value="Sélectionner">
           </div>
           <div class="seigneur_guerre"> <!--Cette div est cacher au début et n'apparait seulement si le perso highlight est un personnage-->
@@ -56,13 +57,13 @@
               <input id="chk_seigneur_guerre" type="checkbox" value="trueSeigneur" class="mgc mgc-primary">
             </div>
             <div>
-              <label for="chk_personnage_trait">Second seigneur de guerre</label>
+              <label for="chk_personnage_trait">Stratagème</label>
               <input id="chk_personnage_trait" type="checkbox" value="secondSeigneur" class="mgc mgc-primary">
             </div>
           </div>
           <div id="div_tableau_unit" class="tableUnit">
             <div>
-              <table class="tab">
+              <table class="tab"> <!--Le tableau apparait quand une unité est highlight-->
                 <thead>
                   <tr>
                     <th>head1</th>
@@ -92,7 +93,7 @@
             </div>
           </div>
         </div>
-        <div class="choixEquipement">
+        <div class="choixEquipement"> <!--Elle apparait quand l'unité est selectionner-->
           <h3>Choix des équipements</h3>
           <div id="div_choix_equipement" class="optionEquip">
             <div class="divOptionEquip">
@@ -158,7 +159,7 @@
             </div>
           </div>
         </div>
-        <div id="div_choix_trait" class="traitSeigneur">
+        <div id="div_choix_trait" class="traitSeigneur"> <!--apparait quand c'est un personnage et que seigneur de guerre est selectionner-->
           <h3>Sélection du trait de seigneur de guerre</h3>
           <div class="boutonRadioTrait">
             <div>
@@ -177,6 +178,29 @@
           <p class="lblErreur">Choisir trait</p>
           <div class="descTrait">
             <h4>Nom trait</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut nunc velit. Nullam sed mauris imperdiet, tempus mauris quis, suscipit odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum augue non mauris sodales, ac cursus justo cursus. Maecenas sollicitudin consequat turpis, quis volutpat lorem euismod at. Donec mollis tempus nulla suscipit varius. Duis tristique, dui in feugiat imperdiet, ipsum elit viverra mi, id finibus sapien lacus eu neque. Morbi pellentesque elementum urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut nulla tristique, pulvinar nulla eu, feugiat magna. 
+            </p>
+          </div>
+        </div>
+        <div id="div_choix_relique" class="ReliqueSeigneur">
+          <h3>Sélection de la relique</h3>
+          <div class="boutonRadioRelique">
+            <div>
+              <label for="radio_test1">Test1</label>
+              <input type="radio" id="radio_test1" value="test" name="test" class="mgr mgr-primary">
+            </div>
+            <div>
+              <label for="radio_test12">test2</label>
+              <input type="radio" id="radio_test12" value="test2" name="test" class="mgr mgr-primary">
+            </div>
+            <div>
+              <label for="radio_test13">test3</label>
+              <input type="radio" id="radio_test13" value="test3" name="test" class="mgr mgr-primary">
+            </div>
+          </div>
+          <div class="descRelique">
+            <h4>Nom relique</h4>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut nunc velit. Nullam sed mauris imperdiet, tempus mauris quis, suscipit odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum augue non mauris sodales, ac cursus justo cursus. Maecenas sollicitudin consequat turpis, quis volutpat lorem euismod at. Donec mollis tempus nulla suscipit varius. Duis tristique, dui in feugiat imperdiet, ipsum elit viverra mi, id finibus sapien lacus eu neque. Morbi pellentesque elementum urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut nulla tristique, pulvinar nulla eu, feugiat magna. 
             </p>
@@ -223,23 +247,6 @@
             </div>
           </div>
           <p class="lblErreur">trop de sorts</p>
-        </div>
-        <div id="div_choix_relique" class="ReliqueSeigneur">
-          <h3>Sélection de la relique</h3>
-          <div class="boutonRadioRelique">
-            <div>
-              <label for="radio_test1">Test1</label>
-              <input type="radio" id="radio_test1" value="test" name="test">
-            </div>
-            <div>
-              <label for="radio_test12">test2</label>
-              <input type="radio" id="radio_test12" value="test2" name="test">
-            </div>
-            <div>
-              <label for="radio_test13">test3</label>
-              <input type="radio" id="radio_test13" value="test3" name="test">
-            </div>
-          </div>
         </div>
       </div>
       <div id="div_affichage_liste" class="affichageListe">
