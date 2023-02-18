@@ -16,7 +16,7 @@
     <main>
       <h2>Création d'une liste</h1>
       <?php
-        require "connect.php";
+        require "config/connect.php";
         $connexion = db_connect();
         $sql = "SELECT * FROM Unité";
         $result = $connexion->query($sql);
@@ -28,7 +28,13 @@
           echo $user->nom_unit . " | " . $user->type_unit;
           echo "<br>";
         }
-        echo "<br>"
+      ?>
+      <?php
+        require "classes/LesFactions.php";
+        $faction = new LesFaction();
+        $tab = $faction->fetchAll();
+        $faction->showAll($tab);
+        //$faction->test();
       ?>
       <div class="creationListecss">
         <div>

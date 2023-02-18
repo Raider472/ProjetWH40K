@@ -33,14 +33,30 @@ main {
 }
 
 main h2 {
+    text-align: center;
     font-size: 2em;
+}
+
+.selectStyle {
+    background-color: #c0b7be;
 }
 
 .faction_selection {
     display: flex;
+    flex-direction: column;
+    font-size: 1.5em;
+}
+
+.faction_selection h3 {
+    border-bottom: 0.1em solid gray;
+}
+
+.divFaction {
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    font-size: 1.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .faction_selection select {
@@ -189,6 +205,10 @@ main h2 {
 .divAjoutUnité {
     padding-bottom: 1em;
     border-bottom: 2px solid green;
+}
+
+.divAjoutUnité h2 {
+    border-bottom: 2px solid gray;
 }
 
 .affichageListe h3 {
@@ -417,28 +437,28 @@ border-radius: 5px;
     border-radius: 5px;
 }
 
-#btn_afficherUnit {
+#btn_afficherUnitTrait {
     font-family: Novarese, monospace, Arial, Helvetica, sans-serif;
     cursor: pointer;
-    background-color: #1D5B99;
-    border-top: 0.2em solid #003380;
-    border-left: 0.2em solid #003380;
-    border-right: 0.2em solid #165FCC;
-    border-bottom: 0.2em solid #165FCC;
+    background-color: #1b8092;
+    border-top: 0.2em solid #08415c;
+    border-left: 0.2em solid #08415c;
+    border-right: 0.2em solid #3c84a5;
+    border-bottom: 0.2em solid #3c84a5;
     border-radius: 5px;
     font-size: 1em;
 }
 
-#btn_afficherUnit:hover {
-    background-color: #4380DB;
+#btn_afficherUnitTrait:hover {
+    background-color: #1bb1c5;
     border-radius: 5px;
 }
 
-#btn_afficherUnit:active {
-    border-top: 0.2em solid #165FCC;
-    border-left: 0.2em solid #165FCC;
-    border-right: 0.2em solid #003380;
-    border-bottom: 0.2em solid #003380;
+#btn_afficherUnitTrait:active {
+    border-top: 0.2em solid #3c84a5;
+    border-left: 0.2em solid #3c84a5;
+    border-right: 0.2em solid #08415c;
+    border-bottom: 0.2em solid #08415c;
     border-radius: 5px;
 }
 

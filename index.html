@@ -15,21 +15,24 @@
     <main>
       <h2>Création d'une liste</h1>
       <div class="faction_selection">
-        <div id="div_selection_faction">
-          <label for="select_faction">Faction</label>
-          <select id="select_faction" name="faction">
-            <option value="">Veuillez choisir une faction</option>
-            <option value="necron">Necron</option>
-            <option value="thousandSons">Thousand Sons</option>
-          </select>
-        </div>
-        <div id="div_choix_sous_faction"> <!--cacher et vide au début-->
-          <label for="select_sous_faction">Dinasty</label>
-          <select id="select_sous_faction" name="sous_faction">
-            <option value="">Aucune</option>
-            <option value="Novokh">Novokh</option>
-            <option value="Szarekhan">Szarekhan</option>
-          </select>
+        <h3>Sélection de la faction</h3>
+        <div class="divFaction">
+          <div id="div_selection_faction">
+            <label for="select_faction">Faction</label>
+            <select id="select_faction" name="faction" class="selectStyle">
+              <option value="">Veuillez choisir une faction</option>
+              <option value="necron">Necron</option>
+              <option value="thousandSons">Thousand Sons</option>
+            </select>
+          </div>
+          <div id="div_choix_sous_faction"> <!--cacher et vide au début-->
+            <label for="select_sous_faction">Dinasty</label>
+            <select id="select_sous_faction" name="sous_faction" class="selectStyle">
+              <option value="">Aucune</option>
+              <option value="Novokh">Novokh</option>
+              <option value="Szarekhan">Szarekhan</option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="TexteSousFaction">
@@ -48,7 +51,7 @@
             </select>
           </div>
           <div id="div_bouton_unite" class="divBoutonUnite">
-            <input type="button" id="btn_afficherUnit" value="Afficher l'Unité">
+            <input type="button" id="btn_afficherUnitTrait" value="Afficher les aptitudes">
             <input type="button" id="btn_ajouter" value="Sélectionner">
           </div>
           <div class="seigneur_guerre"> <!--Cette div est cacher au début et n'apparait seulement si le perso highlight est un personnage-->
