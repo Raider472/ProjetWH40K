@@ -1,3 +1,6 @@
+<?php
+      header("Access-Control-Allow-Origin: *");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -72,6 +75,7 @@
             </select>
           </div>
           <div id="div_bouton_unite">
+            <input type="button" id="btn_afficherUnit" value="Afficher l'Unité">
             <input type="button" id="btn_ajouter" value="Sélectionner">
           </div>
           <div class="seigneur_guerre"> <!--Cette div est cacher au début et n'apparait seulement si le perso highlight est un personnage-->
@@ -163,7 +167,7 @@
 
       </div>
     </main>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="text/javascript" src="/mainWeb.js"></script>
   </body>
 </html>
 
