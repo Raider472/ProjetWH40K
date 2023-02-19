@@ -23,6 +23,12 @@
         $tab = $armes->fetchAllByIdUnit("1");
         $armes->showAll($tab);
       ?>
+      <?php
+        require "src/classes/LesUnités.php";
+        $unités = new LesUnités();
+        $tab = $unités->fetchAllByFactionName("Nécrons");
+        $unités->showAll($tab);
+      ?>
       <div class="faction_selection">
         <h3>Sélection de la faction</h3>
         <div class="divFaction">

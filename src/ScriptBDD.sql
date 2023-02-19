@@ -86,7 +86,7 @@ CREATE TABLE Unité (
     point_unit int NOT NULL DEFAULT 0,
     min_unit int NOT NULL,
     max_unit int NOT NULL,
-    nombre_sort int DEFAULT NULL,
+    nombre_sort int DEFAULT 0,
     mouvement_unit int NOT NULL,
     cc_unit int NOT NULL,
     ct_unit int NOT NULL,
