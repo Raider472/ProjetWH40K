@@ -4,12 +4,11 @@ export default defineConfig({
   build:{
     rollupOptions:{
         input: {
-            app:"src/index.php"
+            app:"./index.html"
         }
     }
   },
   server: {
-    port: "8060",
-    open:"http://localhost:8060"
+    open:"./index.html"
   }
 })

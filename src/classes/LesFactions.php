@@ -1,5 +1,5 @@
 <?php
-    require("Faction.php"); //Tester si sa marche sans
+    require("Faction.php");
     class LesFaction {
         private array $factionTab;
 
@@ -18,12 +18,23 @@
             return $faction;
         }
 
+        function putIntoSelect(array $tab): void {
+            foreach ($tab as $lesFaction) {
+                $text = "<option value=";
+                $nomValue = $lesFaction->getNomFaction();
+                $text .= "\"$nomValue\">";
+                $text .= $nomValue;
+                $text .= "</option>";
+                echo $text;
+            }
+        }
+
         function showAll(array $tab): void {
-            foreach ($tab as $dasFaction) {
+            foreach ($tab as $lesFaction) {
                 echo "<br>";
-                echo $dasFaction->getNomFaction();
+                echo $lesFaction->getNomFaction();
                 echo "<br>";
-              }
+            }
         }
     }
 ?>

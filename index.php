@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="src/style.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/magic-input/dist/magic-input.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="src/assets/40kIcon.jpg">
+    <link rel="icon" href="assets/40kIcon.jpg">
     <title>Créateur de Liste WH40K</title>
   </head>
   <body>
@@ -13,7 +13,16 @@
       <h1>Créateur de liste WH40K</h1>
     </header>
     <main>
-      <h2>Création d'une liste</h1>
+      <?php
+        require("src/config/connect.php");
+      ?>
+      <h2>Création d'une liste</h2>
+      <?php
+        require "src/classes/LesArmes.php";
+        $armes = new LesArmes();
+        $tab = $armes->fetchAllByIdUnit("1");
+        $armes->showAll($tab);
+      ?>
       <div class="faction_selection">
         <h3>Sélection de la faction</h3>
         <div class="divFaction">
@@ -21,8 +30,12 @@
             <label for="select_faction">Faction</label>
             <select id="select_faction" name="faction" class="selectStyle">
               <option value="">Veuillez choisir une faction</option>
-              <option value="necron">Necron</option>
-              <option value="thousandSons">Thousand Sons</option>
+              <?php
+                require "src/classes/LesFactions.php";
+                $faction = new LesFaction();
+                $tab = $faction->fetchAll();
+                $faction->putIntoSelect($tab);
+              ?>
             </select>
           </div>
           <div id="div_choix_sous_faction"> <!--cacher et vide au début-->
@@ -290,6 +303,6 @@
       <p>Crée par Gabriel NAE /Placeholder</p>
       <div>Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>is licensed by CC BY 3.0</div>
     </footer>
-    <script type="module" src="/src/script/mainWeb.ts"></script>
+    <script type="text/javascript" src="script/mainWeb.js"></script>
   </body>
 </html>

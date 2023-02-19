@@ -27,6 +27,5 @@ class mainScript {
     }
 }
 
-let vueMain = new mainScript
-
-export {vueMain}
+let vueMain = new mainScript()
+export default vueMain
