@@ -1,4 +1,4 @@
-import vueMain from "./mainScript";
+import vueMain from "./mainScript.js";
 vueMain.init({
     divSelectionFaction: document.querySelector("[id=div_selection_faction]"),
     selectFaction: document.querySelector("[id=select_faction]"),
