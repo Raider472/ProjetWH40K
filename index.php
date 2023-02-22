@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="src/style.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/magic-input/dist/magic-input.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="assets/40kIcon.jpg">
+    <link rel="icon" href="src/assets/40kIcon.jpg">
     <script type="module" src="/script/mainWeb.js" defer async></script>
     <title>Créateur de Liste WH40K</title>
   </head>
@@ -18,18 +18,6 @@
         require("src/config/connect.php");
       ?>
       <h2>Création d'une liste</h2>
-      <?php
-        require "src/classes/LesArmes.php";
-        $armes = new LesArmes();
-        $tab = $armes->fetchAllByIdUnit("1");
-        $armes->showAll($tab);
-      ?>
-      <?php
-        require "src/classes/LesUnités.php";
-        $unités = new LesUnités();
-        $tab = $unités->fetchAllByFactionName("Nécrons");
-        $unités->showAll($tab);
-      ?>
       <div class="faction_selection">
         <h3>Sélection de la faction</h3>
         <div class="divFaction">
@@ -46,11 +34,8 @@
             </select>
           </div>
           <div id="div_choix_sous_faction"> <!--cacher et vide au début-->
-            <label for="select_sous_faction">Dinasty</label>
+            <label for="select_sous_faction" id="label_sous_faction"></label>
             <select id="select_sous_faction" name="sous_faction" class="selectStyle">
-              <option value="">Aucune</option>
-              <option value="Novokh">Novokh</option>
-              <option value="Szarekhan">Szarekhan</option>
             </select>
           </div>
         </div>
@@ -68,6 +53,12 @@
           <div class="selectUnités">
             <h3>Sélection de l'unité</h3>
             <select id="select_unites" name="unites" size="15">
+              <?php
+                require "src/classes/LesUnités.php";
+                $lesUnités = new LesUnités();
+                $tab = $lesUnités->fetchAllByFactionName("Nécrons");
+                $lesUnités->putIntoSelect($tab);
+              ?>
             </select>
           </div>
           <div id="div_bouton_unite" class="divBoutonUnite">

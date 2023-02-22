@@ -33,7 +33,7 @@ create table SousFaction (
     num_sousFaction int PRIMARY KEY AUTO_INCREMENT,
     id_faction int NOT NULL,
     nom_sousFaction varchar(50) NOT NULL,
-    nom_faction varchar(15) DEFAULT NULL,
+    nom_faction varchar(15) NOT NULL,
     FOREIGN KEY(id_faction) REFERENCES Faction(num_faction)
 );
 
@@ -245,13 +245,13 @@ CREATE TABLE EquipementPris (
 -- Insértion dans les tableaux
 
 -- Insertion Des Factions ---------------------------------------
-INSERT INTO Faction(nom_faction, alliance_faction) VALUES ("Nécrons", "Xeno"), ("Thousand Sons", "Chaos"), ("Ork", "Xeno");
+INSERT INTO Faction(nom_faction, alliance_faction) VALUES ("Nécrons", "Xeno"), ("Thousand Sons", "Chaos"), ("Space Marine", "Loyaliste");
 
 -- Insertion pour les Nécrons
 
 -- Insertion Des Sous Factions ---------------------------------------
-INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) VALUES (1, "Neutre", "Nécrons");
 
+-- Nécrons
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Novokh", nom_faction FROM Faction WHERE num_faction = 1; 
 
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Szarekhan", nom_faction FROM Faction WHERE num_faction = 1;
@@ -263,6 +263,54 @@ INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_fac
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Nihilakh", nom_faction FROM Faction WHERE num_faction = 1;
 
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Sautekh", nom_faction FROM Faction WHERE num_faction = 1;
+
+-- Thousand Sons
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Culte du Temps", nom_faction FROM Faction WHERE num_faction = 2; 
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Culte de la Mutation", nom_faction FROM Faction WHERE num_faction = 2;
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Culte du Savoir", nom_faction FROM Faction WHERE num_faction = 2;
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Culte de la Duplicité", nom_faction FROM Faction WHERE num_faction = 2;
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Culte de l'Intrigue", nom_faction FROM Faction WHERE num_faction = 2;
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Culte de la Magie", nom_faction FROM Faction WHERE num_faction = 2;
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Culte de la Prophétie", nom_faction FROM Faction WHERE num_faction = 2;
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Culte du Changement", nom_faction FROM Faction WHERE num_faction = 2;
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Culte de la Manipulation", nom_faction FROM Faction WHERE num_faction = 2;
+
+-- Space Marine
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Dark Angels", nom_faction FROM Faction WHERE num_faction = 3;
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "White Scars", nom_faction FROM Faction WHERE num_faction = 3;
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Space Wolf", nom_faction FROM Faction WHERE num_faction = 3; 
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Imperial Fists", nom_faction FROM Faction WHERE num_faction = 3; 
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Crimson Fists", nom_faction FROM Faction WHERE num_faction = 3; 
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Black Templar", nom_faction FROM Faction WHERE num_faction = 3; 
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Blood Angels", nom_faction FROM Faction WHERE num_faction = 3; 
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Flesh Tearers", nom_faction FROM Faction WHERE num_faction = 3; 
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Iron Hands", nom_faction FROM Faction WHERE num_faction = 3; 
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Ultramarines", nom_faction FROM Faction WHERE num_faction = 3;
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Salamanders", nom_faction FROM Faction WHERE num_faction = 3; 
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Raven Guard", nom_faction FROM Faction WHERE num_faction = 3; 
+
+INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Deathwatch", nom_faction FROM Faction WHERE num_faction = 3; 
 
 -- Insertion des traits ---------------------------------------
 INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 

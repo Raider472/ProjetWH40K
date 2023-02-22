@@ -1,18 +1,43 @@
 class mainScript {
-    init(type) {
+    constructor(type) {
         this._type = type;
+        this.type.divChoixSousFaction.hidden = true;
+        this.type.selectFaction.value = "";
     }
     get type() {
         return this._type;
     }
-    test() {
-        console.log("hello");
-        this.type.divSelectionFaction.hidden = true;
-        this._type.divSelectionFaction.innerHTML = "test";
-        this._type.divAjoutUnite.innerHTML = "require \"connect.php\";  $connexion = db_connect(); $sql = \"SELECT * FROM Unité\"; $result = $connexion->query($sql); while ($data = $result->fetch_object()) { $users[] = $data; } foreach ($users as $user) { echo \"<option value=\"$user->nom_unit\"> $user->nom_unit </option>\"; }";
-        this._type.selectFaction.innerHTML = "require \"connect.php\";  $connexion = db_connect(); $sql = \"SELECT * FROM Unité\"; $result = $connexion->query($sql); while ($data = $result->fetch_object()) { $users[] = $data; } foreach ($users as $user) { echo \"<option value=\"$user->nom_unit\"> $user->nom_unit </option>\"; }";
+    afficherSousFaction(valueSelect = this.type.selectFaction.value) {
+        if (valueSelect != "") {
+            const ajax = new XMLHttpRequest();
+            this.type.selectSousFaction.innerHTML = "<option value=\"\">Neutre</option>";
+            ajax.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("select_sous_faction").innerHTML += this.responseText;
+                }
+            };
+            ajax.open("POST", "fonction.php?action=" + "affichageSousFaction" + "&faction=" + valueSelect, true);
+            ajax.send();
+            switch (valueSelect) {
+                case "Nécrons":
+                    this.type.lblSousFaction.innerHTML = "Dynastie";
+                    break;
+                case "Thousand Sons":
+                    this.type.lblSousFaction.innerHTML = "Culte";
+                    break;
+                case "Space Marine":
+                    this.type.lblSousFaction.innerHTML = "Chapitre";
+                    break;
+                default: this.type.lblSousFaction.innerHTML = "";
+            }
+            this.type.divChoixSousFaction.hidden = false;
+        }
+        else {
+            console.log(valueSelect, "bad");
+            this.type.divChoixSousFaction.hidden = true;
+            this.type.selectSousFaction.innerHTML = "";
+        }
     }
 }
-let vueMain = new mainScript();
-export default vueMain;
+export default mainScript;
 //# sourceMappingURL=mainScript.js.map

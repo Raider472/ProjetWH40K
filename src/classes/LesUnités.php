@@ -41,6 +41,20 @@
             return $unité;
         }
 
+        function putIntoSelect(array $tab): void {
+            foreach ($tab as $lesUnités) {
+                $text = "<option value=";
+                $nomValue = $lesUnités->getNomUnit();
+                $text .= "\"$nomValue\">";
+                $text .= $nomValue . " | " . $lesUnités->getTypeUnit() . " | " . $lesUnités->getPointUnit() . " Points";
+                if ($lesUnités->getPersonnageUnit() === 1) {
+                    $text .= " | Personnage"; 
+                }
+                $text .= "</option>";
+                echo $text;
+            }
+        }
+
         function showAll(array $tab): void {
             foreach ($tab as $lesUnités) {
                 echo "<br>";
