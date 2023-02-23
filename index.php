@@ -40,12 +40,11 @@
           </div>
         </div>
       </div>
-      <div class="TexteSousFaction">
+      <div class="TexteSousFaction" id="div_affichage_bonus_sous_faction"><!--Faire disparaitre aprés-->
         <h2>Bonus de sous-faction</h2>
-        <h3>Novokh</h3>
-        <p>
-          Ajoutez 1 aux jets de charge pour les unités ayant ce code. \nChaque fois qu'une figurine ayant ce code fait une attaque de mêlée, si l'unité de la figurine a fait un mouvement de charge, a été chargée ou a accompli une Intervention Héroique à ce tour, améliorez de 1 la caractéristique de Pénétration d'armure de l'attaque. \nLorsque le protocole du Néant Avide devient actif pour votre armée, si toutes les unité de votre armée (à l'exception des unités DYNASTIC AGENT et C'TAN SHARD) possède ce code, vous pouvez sélectionner les deux directives de ce protocole de commande au lieu d'une seule.
-        </p>
+        <h3 id="h3_titre_sous_faction"></h3>
+        <h4 id="h4_titre_trait_sous_faction"></h4>
+        <ul id="ul_desc_sous_faction" class="ulDescSousFaction"></ul>
       </div>
       <div id="div_ajout_unite" class="divAjoutUnité">
         <h2>Ajout d'unités</h2>
@@ -53,12 +52,6 @@
           <div class="selectUnités">
             <h3>Sélection de l'unité</h3>
             <select id="select_unites" name="unites" size="15">
-              <?php
-                require "src/classes/LesUnités.php";
-                $lesUnités = new LesUnités();
-                $tab = $lesUnités->fetchAllByFactionName("Nécrons");
-                $lesUnités->putIntoSelect($tab);
-              ?>
             </select>
           </div>
           <div id="div_bouton_unite" class="divBoutonUnite">
@@ -66,11 +59,11 @@
             <input type="button" id="btn_ajouter" value="Sélectionner">
           </div>
           <div class="seigneur_guerre"> <!--Cette div est cacher au début et n'apparait seulement si le perso highlight est un personnage-->
-            <div>
+            <div id="div_check_seigneur">
               <label for="chk_seigneur_guerre">Seigneur de guerre</label>
               <input id="chk_seigneur_guerre" type="checkbox" value="trueSeigneur" class="mgc mgc-primary">
             </div>
-            <div>
+            <div id="div_check_seigneur_traitSec">
               <label for="chk_personnage_trait">Stratagème</label>
               <input id="chk_personnage_trait" type="checkbox" value="secondSeigneur" class="mgc mgc-primary">
             </div>

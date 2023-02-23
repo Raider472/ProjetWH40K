@@ -34,6 +34,22 @@
             }
         }
 
+        function filterBySubFactionName(string $SubFactionName): array {
+            $connexion = db_connect();
+            $sql = "SELECT * FROM SousFaction WHERE nom_sousFaction = " . "\"" . "$SubFactionName" . "\""; 
+            $result = $connexion->query($sql);
+            $uneSousFaction = [];
+            while ($data = $result->fetch_object()) {
+                $uneSousFaction[] = new SousFaction(
+                    $data->num_sousFaction, 
+                    $data->id_faction, 
+                    $data->nom_sousFaction,
+                    $data->nom_faction
+                );
+            }
+            return $uneSousFaction;
+        }
+
         function showAll(array $tab): void {
             foreach ($tab as $lesSousFaction) {
                 echo "<br>";
