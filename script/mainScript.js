@@ -63,7 +63,7 @@ class mainScript {
             this.type.divAffichageBonusSousFaction.hidden = true;
             this.type.h3TitreSousFaction.innerHTML = "";
             this.type.h4TitreTraitSousFaction.innerHTML = "";
-            this.type.pDescSousFaction.innerHTML = "";
+            this.type.ulDescSousFaction.innerHTML = "";
         }
     }
     afficherTitreSousFaction(valueSelect = this.type.selectSousFaction.value) {
@@ -94,6 +94,59 @@ class mainScript {
             }
         };
         ajax.open("POST", "fonction.php?action=" + "affichageDescriptionTraitSousFaction" + "&sousFaction=" + valueSelect, true);
+        ajax.send();
+    }
+    affichageDesUnitésMain(valueSelect = this.type.selectUnité.value) {
+        if (valueSelect != "") {
+            const ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("div_tableau_unit").innerHTML = this.responseText;
+                }
+            };
+            ajax.open("POST", "fonction.php?action=" + "affichageStatsUnit" + "&unit=" + valueSelect, true);
+            ajax.send();
+        }
+        else {
+            this.type.divTableauUnit.innerHTML = "";
+        }
+    }
+    affichageDesAptitudesSelect(valueSelect = this.type.selectUnité.value) {
+        if (valueSelect != "") {
+            const ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("select_trait").innerHTML = this.responseText;
+                }
+            };
+            ajax.open("POST", "fonction.php?action=" + "affichageUnitTrait" + "&Trait=" + valueSelect, true);
+            ajax.send();
+        }
+    }
+    affichageNomDescTrait(valueSelect = this.type.selectTrait.value) {
+        if (valueSelect != "") {
+            this.affichageNomTrait();
+            this.affichageDescTrait();
+        }
+    }
+    affichageNomTrait(valueSelect = this.type.selectTrait.value) {
+        const ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("ul_desc_trait").innerHTML = this.responseText;
+            }
+        };
+        ajax.open("POST", "fonction.php?action=" + "affichageUnitTraitDesc" + "&Trait=" + valueSelect, true);
+        ajax.send();
+    }
+    affichageDescTrait(valueSelect = this.type.selectTrait.value) {
+        const ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("h3_titre_trait").innerHTML = this.responseText;
+            }
+        };
+        ajax.open("POST", "fonction.php?action=" + "affichageUnitTraitNom" + "&Trait=" + valueSelect, true);
         ajax.send();
     }
 }

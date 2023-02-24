@@ -31,9 +31,9 @@ create table Faction (
 
 create table SousFaction (
     num_sousFaction int PRIMARY KEY AUTO_INCREMENT,
-    id_faction int NOT NULL,
+    id_faction int DEFAULT NULL,
     nom_sousFaction varchar(50) NOT NULL,
-    nom_faction varchar(15) NOT NULL,
+    nom_faction varchar(15) DEFAULT NULL,
     FOREIGN KEY(id_faction) REFERENCES Faction(num_faction)
 );
 
@@ -250,6 +250,8 @@ INSERT INTO Faction(nom_faction, alliance_faction) VALUES ("Nécrons", "Xeno"), 
 -- Insertion pour les Nécrons
 
 -- Insertion Des Sous Factions ---------------------------------------
+
+INSERT INTO SousFaction(nom_sousFaction) VALUE ("Neutre");
 
 -- Nécrons
 INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_faction, "Novokh", nom_faction FROM Faction WHERE num_faction = 1; 

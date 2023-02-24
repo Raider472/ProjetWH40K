@@ -48,7 +48,8 @@
       </div>
       <div id="div_ajout_unite" class="divAjoutUnité">
         <h2>Ajout d'unités</h2>
-        <div class="selectionDunité">
+        <!--Unité-->
+        <div id="div_affichage_unité" class="selectionDunité">
           <div class="selectUnités">
             <h3>Sélection de l'unité</h3>
             <select id="select_unites" name="unites" size="15">
@@ -68,38 +69,29 @@
               <input id="chk_personnage_trait" type="checkbox" value="secondSeigneur" class="mgc mgc-primary">
             </div>
           </div>
-          <div id="div_tableau_unit" class="tableUnit">
-            <div>
-              <table class="tab"> <!--Le tableau apparait quand une unité est highlight-->
-                <thead>
-                  <tr>
-                    <th>head1</th>
-                    <th>head2</th>
-                    <th>head3</th>
-                    <th>head4</th>
-                    <th>head1</th>
-                    <th>head2</th>
-                    <th>head3</th>
-                    <th>head4</th>
-                  </tr>
-                  </thead>
-                    <tbody>
-                    <tr>
-                      <td>cell1_1</td>
-                      <td>cell2_1</td>
-                      <td>cell3_1</td>
-                      <td>cell4_1</td>
-                      <td>cell1_1</td>
-                      <td>cell2_1</td>
-                      <td>cell3_1</td>
-                      <td>cell4_1</td>
-                    </tr>
-                    </tbody>
-                  </tr>
-                </table>
+          <div class="tableUnit">
+            <div id="div_tableau_unit">
             </div>
           </div>
         </div>
+        <!--Unité-->
+        <!--Aptitude-->
+        <div id="div_affichage_detail_trait" class="selectionDunité">
+          <div class="selectUnités">
+            <h3>Detail des traits de l'unité</h3>
+            <select id="select_trait" name="unites" size="15">
+            </select>
+          </div>
+          <div class="divBoutonUnite">
+            <input type="button" id="btn_retourUnitTrait" value="Retour">
+          </div>
+        <div class="TexteSousFaction">
+          <h3 id="h3_titre_trait"></h3>
+          <ul id="ul_desc_trait" class="ulDescSousFaction"></ul>
+        </div>
+        </div>
+        <!--Aptitude-->
+        <!--Equipement-->
         <div class="choixEquipement"> <!--Elle apparait quand l'unité est selectionner-->
           <h3>Choix des équipements</h3>
           <div id="div_choix_equipement" class="optionEquip">
@@ -166,6 +158,8 @@
             </div>
           </div>
         </div>
+        <!--Equipement-->
+        <!--Trait-->
         <div id="div_choix_trait" class="traitSeigneur"> <!--apparait quand c'est un personnage et que seigneur de guerre est selectionner-->
           <h3>Sélection du trait de seigneur de guerre</h3>
           <div class="boutonRadioTrait">
@@ -190,6 +184,8 @@
             </p>
           </div>
         </div>
+        <!--Trait-->
+        <!--Relique-->
         <div id="div_choix_relique" class="ReliqueSeigneur">
           <h3>Sélection de la relique</h3>
           <div class="boutonRadioRelique">
@@ -213,6 +209,8 @@
             </p>
           </div>
         </div>
+        <!--Relique-->
+        <!--Sort-->
         <div id="div_choix_sort" class="choixSort">
           <h3>Sélection des sorts</h3>
           <div class="optionSortChoix">
@@ -255,6 +253,7 @@
           </div>
           <p class="lblErreur">trop de sorts</p>
         </div>
+        <!--Sort-->
       </div>
       <div id="div_affichage_liste" class="affichageListe">
         <h2>Vue d'ensemble de la liste</h2>

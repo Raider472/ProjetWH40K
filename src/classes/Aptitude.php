@@ -2,11 +2,11 @@
     class Aptitude {
         private int $num_apti;
         private int $id_faction;
-        private int | null $id_sousFaction;
+        private int | string | null $id_sousFaction;
         private string $nom_apti;
         private string | null $desc_apti;
 
-        function __construct(int $num_apti, int $id_faction, int | null $id_sousFaction, string $nom_apti, string |null $desc_apti) {
+        function __construct(int $num_apti, int $id_faction, int | null | string $id_sousFaction, string $nom_apti, string |null $desc_apti) {
             $this->num_apti = $num_apti;
             $this->id_faction = $id_faction;
             if ($id_sousFaction === null) {
@@ -24,7 +24,7 @@
             return $this->num_apti;
         }
 
-        function getIdFaction(): int {
+        function getIdFaction(): int|string {
             return $this->id_faction;
         }
 
