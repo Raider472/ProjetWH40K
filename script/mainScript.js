@@ -4,6 +4,7 @@ class mainScript {
         this.type.divChoixSousFaction.hidden = true;
         this.type.selectFaction.value = "";
         this.type.divAffichageBonusSousFaction.hidden = true;
+        this.type.divAffichageDetailTrait.hidden = true;
     }
     get type() {
         return this._type;
@@ -106,8 +107,10 @@ class mainScript {
             };
             ajax.open("POST", "fonction.php?action=" + "affichageStatsUnit" + "&unit=" + valueSelect, true);
             ajax.send();
+            this.type.h5NomUnitéActuel.innerHTML = valueSelect;
         }
         else {
+            this.type.h5NomUnitéActuel.innerHTML = "";
             this.type.divTableauUnit.innerHTML = "";
         }
     }
@@ -121,7 +124,15 @@ class mainScript {
             };
             ajax.open("POST", "fonction.php?action=" + "affichageUnitTrait" + "&Trait=" + valueSelect, true);
             ajax.send();
+            this.type.divAffichageUnité.hidden = true;
+            this.type.divAffichageDetailTrait.hidden = false;
+            this.type.h4NomUnitéTrait.innerHTML = valueSelect;
         }
+    }
+    cacherLesAptitudesSelect() {
+        this.type.divAffichageDetailTrait.hidden = true;
+        this.type.divAffichageUnité.hidden = false;
+        this.type.selectTrait.value = "";
     }
     affichageNomDescTrait(valueSelect = this.type.selectTrait.value) {
         if (valueSelect != "") {
@@ -147,6 +158,16 @@ class mainScript {
             }
         };
         ajax.open("POST", "fonction.php?action=" + "affichageUnitTraitNom" + "&Trait=" + valueSelect, true);
+        ajax.send();
+    }
+    afficherChoixDesEquipementsTableau(valueSelect = this.type.selectUnité.value) {
+        const ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("div_tableau_equip").innerHTML = this.responseText;
+            }
+        };
+        ajax.open("POST", "fonction.php?action=" + "affichageTableauEquip" + "&UnitEquip=" + valueSelect, true);
         ajax.send();
     }
 }

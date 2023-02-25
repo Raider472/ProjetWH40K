@@ -10,6 +10,7 @@ let vueMain = new mainScript({
     h4TitreTraitSousFaction: document.querySelector("[id=h4_titre_trait_sous_faction]"),
     ulDescSousFaction: document.querySelector("[id=ul_desc_sous_faction]"),
     divAffichageUnité: document.querySelector("[id=div_affichage_unité]"),
+    h5NomUnitéActuel: document.querySelector("[id=h5_nom_unité_actuel]"),
     divAjoutUnite: document.querySelector("[id=div_ajout_unite]"),
     selectUnité: document.querySelector("[id=select_unites]"),
     btnAfficherUnitTrait: document.querySelector("[id=btn_afficherUnitTrait]"),
@@ -19,6 +20,7 @@ let vueMain = new mainScript({
     checkSeigneur: document.querySelector("[id=chk_seigneur_guerre]"),
     checkSeigneurTraitSec: document.querySelector("[id=chk_personnage_trait]"),
     divTableauUnit: document.querySelector("[id=div_tableau_unit]"),
+    h4NomUnitéTrait: document.querySelector("[id=h4_nom_unité_trait]"),
     divAffichageDetailTrait: document.querySelector("[id=div_affichage_detail_trait]"),
     selectTrait: document.querySelector("[id=select_trait]"),
     btnRetourUnitTrait: document.querySelector("[id=btn_retourUnitTrait]"),
@@ -27,7 +29,8 @@ let vueMain = new mainScript({
 });
 vueMain.type.selectFaction.addEventListener("change", function () { vueMain.afficherSousFaction(); });
 vueMain.type.selectSousFaction.addEventListener("change", function () { vueMain.affichageDeSousFactionMain(); });
-vueMain.type.selectUnité.addEventListener("change", function () { vueMain.affichageDesUnitésMain(); });
+vueMain.type.selectUnité.addEventListener("change", function () { vueMain.affichageDesUnitésMain(), vueMain.afficherChoixDesEquipementsTableau(); });
 vueMain.type.btnAfficherUnitTrait.addEventListener("click", function () { vueMain.affichageDesAptitudesSelect(); });
 vueMain.type.selectTrait.addEventListener("change", function () { vueMain.affichageNomDescTrait(); });
+vueMain.type.btnRetourUnitTrait.addEventListener("click", function () { vueMain.cacherLesAptitudesSelect(); });
 //# sourceMappingURL=mainWeb.js.map

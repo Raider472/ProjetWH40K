@@ -67,6 +67,14 @@
             $desc = $tab[0]->getDescApti();
             $uneAptitudeDesc->miseEnPlaceDescription($desc);
         break;
+
+        case "affichageTableauEquip":
+            require "src/classes/LesArmes.php";
+            $parametre = $_REQUEST["UnitEquip"];
+            $lesArmes = new LesArmes();
+            $tab = $lesArmes->fetchAptitudeByUnitName($parametre);
+            $lesArmes->putIntoTable($tab);
+        break;
         default: echo "<h1>Erreur Erreur Erreur Erreur Erreur Erreur</h1>";
     }
 ?>

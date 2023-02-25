@@ -316,7 +316,7 @@ INSERT INTO SousFaction(id_faction, nom_sousFaction, nom_faction) SELECT num_fac
 
 -- Insertion des traits ---------------------------------------
 INSERT INTO Trait(id_faction, nom_trait, id_sousFaction, desc_trait) 
-SELECT id_faction, "Fureur de sang", num_sousFaction, "Chaque fois que ce Seigneur de guerre fait une attaque de mêlée, un jet de blessure non modifié de 6 inflige 1 blessure mortelle à la cible en plus de tout autre dégât normal."
+SELECT id_faction, "Fureur de sang", num_sousFaction, "Chaque fois que ce Seigneur de guerre fait une attaque de Mêlée, un jet de blessure non modifié de 6 inflige 1 blessure mortelle à la cible en plus de tout autre dégât normal."
 FROM SousFaction 
 WHERE nom_sousFaction = "Novokh";
 
@@ -347,14 +347,14 @@ WHERE nom_sousFaction = "Sautekh";
 
 INSERT INTO Trait(id_faction, nom_trait, desc_trait) 
 VALUES (1, "Volonté immuable", "Chaque fois qu'on alloue une attaque à ce Seigneur de Guerre, on soustrait 1 à la caractéristique de Dégats de l'attaque (jusqu'à un minimum de 1)."),
-(1, "Folie éternelle", "Chaque fois que ce Seigneur de Guerre fait une attaque de mêlée, vous pouvez relancer le jet de blessure"),
+(1, "Folie éternelle", "Chaque fois que ce Seigneur de Guerre fait une attaque de Mêlée, vous pouvez relancer le jet de blessure"),
 (1, "Vanité imortelle", "Chaque fois que ce Seigneur de Guerre est censé perdre un PV suite à une blessure mortelle, jetez un D6: sur un 5+, le PV n'est pas perdu. --Ce Seigneur de Guerre a l'aptitude suivante: Vanité immortelle (aura): Tant qu'une unité Base<Dynastie> amie est à 6 pouce de cette figurine, chaque fois qu'un test d'attrition est effectué pour l'unité, ignorez-en certains ou tous les modificateurs."),
 (1, "Servant du roi silencieux", "Ajoutez 3 pouce à la portée des aptitudes d'aura de ce Seigneur de Guerre (max 9). De plus, quand ce Seigneur de Guerre utilise les aptitudes Que Ma Volonté s'Acomplisse, Volonté du Dynaste ou Adaptation Stratégique, vous pouvez choisir une unité Base <Dynastie> amie à 12 pouce de ce Seigneur de Guerre au lieu de 9 pouce."),
 (1, "Conquérent implacable(Aura)", "Tant qu'une unité Base<Dynastie> amie est à 6 pouce de ce Seigneur de Guerre, vous pouvez relancer les jets de charges pour l'unité."),
 (1, "Combattant honorable", "A la phase de combat, chaque fois que ce Seigneur de Guerre est choisi pour combattre, il peut engager un combat honorable. Dans ce cas, choisissez une unité Personnage ennemie; jusqu'à la fin de la phase ajoutez 2 à la caractéristique d'Attaque de ce Seigneur de Guerre, mais il peut seulement faire des attaques qui ciblent l'unité Personnage ennemie.");
 
 -- Insertion des Aptitudes ---------------------------------------
-INSERT INTO Aptitude(id_faction, id_sousFaction, nom_apti, desc_apti) VALUES (1, 1, "Eveil par le meurtre", "Ajoutez 1 aux jets de charge pour les unités ayant ce code. --Chaque fois qu'une figurine ayant ce code fait une attaque de mêlée, si l'unité de la figurine a fait un mouvement de charge, a été chargée ou a accompli une Intervention Héroique à ce tour, améliorez de 1 la caractéristique de Pénétration d'armure de l'attaque. --Lorsque le protocole du Néant Avide devient actif pour votre armée, si toutes les unité de votre armée (à l'exception des unités DYNASTIC AGENT et C'TAN SHARD) possède ce code, vous pouvez sélectionner les deux directives de ce protocole de commande au lieu d'une seule."),
+INSERT INTO Aptitude(id_faction, id_sousFaction, nom_apti, desc_apti) VALUES (1, 1, "Eveil par le meurtre", "Ajoutez 1 aux jets de charge pour les unités ayant ce code. --Chaque fois qu'une figurine ayant ce code fait une attaque de Mêlée, si l'unité de la figurine a fait un mouvement de charge, a été chargée ou a accompli une Intervention Héroique à ce tour, améliorez de 1 la caractéristique de Pénétration d'armure de l'attaque. --Lorsque le protocole du Néant Avide devient actif pour votre armée, si toutes les unité de votre armée (à l'exception des unités DYNASTIC AGENT et C'TAN SHARD) possède ce code, vous pouvez sélectionner les deux directives de ce protocole de commande au lieu d'une seule."),
 (1, 2, "Artificiers remarquables", "Chaque fois qu'une figurine ayant ce code perdrait un PV suite à une blessure mortelle, lancez un D6 ; sur un 5+, le PV n'est pas perdue. --Chaque fois qu'une unité ayant ce code est sélectionnée pour tirer ou combattre, vous pouvez relancer un seul jet de blessure en faisant les attaques de l'unité. --Quand le Protocole des Légions Impérissable devient actif pour votre armée, si toutes les unités de votre armée (à l'exception des unités D'AGENT DYNASTIQUE et d'ECHARDE C'TAN) possède ce code, vous pouvez sélectionner les deux directives de ce protocole de commandement au lieu d'une seule."),
 (1, 3, "Fureur Solaire", "Ajoutez 3 pouce à la caractéristique de Portée des armes de tir (à l'exception des pistolets) dont les figurines possédant ce code sont équipées. --Chaque fois qu'une figurine possédant ce code effectue une attaque à distance qui cible une unité située à mi-distance, la caractéristique de pénétration de l'armure de cette attaque est améliorée de 1. --Quand le protocole des Astres Vengeurs devient actif pour votre armée, si toutes les unités de votre armée (à l'exception des unités de l'AGENT DYNASTIQUE et du C'TAN SHARD) possèdent ce code, vous pouvez sélectionner les deux directives de ce protocole de commandement au lieu d'une seule."),
 (1, 4, "Rayons de translocalisation", "Les figurines avec ce code ont une sauvegarde invulnérable de 6+. --Chaque fois qu'une unité avec ce code Avance, elle peut se translocaliser. Si elle le fait, ne faites pas de jet d'Avance pour elle. A la place, jusqu'à la fin de la phase, ajoutez 6 pouce à la caractéristique de mouvement des figurines de cette unité. Si une unité se translocalise, jusqu'à la fin du tour, les figurines de cette unité ne peuvent pas tirer. --Chaque fois qu'une unité avec ce code Bat en Retraite ou se translocalise, jusqu'à la fin de la phase, les figurines de cette unité peuvent se déplacer à travers les figurines et le terrain comme s'ils n'étaient pas là. --Quand le Protocole de la Tempête Soudaine devient actif pour votre armée, si chaque unité de votre armée (à l'exception des unités de l'AGENT DYNASTIQUE et de la CARTE C'TAN) possède ce code, vous pouvez sélectionner les deux directives de ce protocole de commandement au lieu d'une seule."),
@@ -379,7 +379,7 @@ INSERT INTO Aptitude(id_faction, nom_apti, desc_apti) VALUES (1, "Protocole de r
 (1, "Protocoles de rappel", "Lors de l'étape des Tests de Cohérence d'Unité de la phase de Moral, si cette figurine n'est pas à 6 pouce d'une unité amie de DESTROYER CULTE DYNASTIE, cette figurine est détruite."),
 (1, "Démence injectée", "Une fois par tour, au début de votre phase de charge ou de la phase de combat, vous pouvez choisir une unité amie CULTE DESTROYER DYNASTIE dans un rayon de 3 pouce de ce modèle. Si vous le faites, lancez un D6 : sur 1, une figurine de cette unité est détruit. Quel que soit le résultat, jusqu'à la fin du tour, ajoutez 1 aux caractéristiques Force et Attaques des modèles de cette unité. Chaque unité ne peut être sélectionnée pour cette capacité qu'une fois par tour."),
 (1, "Faux d'hyperphase", "Chaque fois qu'une figurine de cette unité fait une attaque avec une FAUX D'HYPERPHASE, un jet de touche non modifié de 6 cause 1 touches supplémentaire."),
-(1, "Corps sinueux", "A chaque attaque de mêlée contre cette unité, soustrayez 1 au jet de touche de l'attaque."),
+(1, "Corps sinueux", "A chaque attaque de Mêlée contre cette unité, soustrayez 1 au jet de touche de l'attaque."),
 (1, "Horreurs fouisseuses", "Pendant le déploiement, vous pouvez mettre en place cette unité sous terre au lieu de la mettre en place sur le champ de bataille. Dans ce cas, pendant l'étape Renforts de l'une de vos phases de mouvement, vous pouvez installer cette unité n'importe où sur le champ de bataille à une distance de plus de 9 pouce de tout modèle ennemi."),
 (1, "Attaque furtive", "Cette unité est éligible pour tirer et déclarer une charge à un tours lors duquel elle a battu en retraite."),
 (1, "Enveloppe spectrale", "Les modèles de cette unité ont une sauvegarde invulnérable de 4+. De plus, à chaque fois que cette unité effectue un mouvement normal, avance, recule ou effectue un mouvement de charge, jusqu'à ce que ce mouvement soit terminé, les modèles de cette unité peuvent se déplacer horizontalement à travers les modèles et les éléments du terrain (ils ne peuvent pas terminer un mouvement sur un autre modèle ou son socle)."),
@@ -468,52 +468,52 @@ VALUES("Ecorcheur gauss jumelé", 1, 24, "Tir Rapide 2", "4", -1, "1", true);
 
 -- Mêlée ++++++++++++++++++++++++++++++++++++++++++++
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, base_arme)
-VALUES("Lance Spectrale (mêlée)", 1, "mêlée", "util.", -4, "2", true);
+VALUES("Lance Spectrale (Mêlée)", 1, "Mêlée", "util.", -4, "2", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, base_arme)
-VALUES("Jambes empaleuses", 1, "mêlée", "util.", -2, "1", "Chaque fois que le porteur combat, il fait 2 attaques supplémentaire avec cette arme.", true);
+VALUES("Jambes empaleuses", 1, "Mêlée", "util.", -2, "1", "Chaque fois que le porteur combat, il fait 2 attaques supplémentaire avec cette arme.", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme, base_arme)
-VALUES("Vouge d'hyperphase", 1, "mêlée", "+2", -3, "D3", true, true);
+VALUES("Vouge d'hyperphase", 1, "Mêlée", "+2", -3, "D3", true, true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme)
-VALUES("Épée d'hyperphase", 1, "mêlée", "+1", -3, "1", true);
+VALUES("Épée d'hyperphase", 1, "Mêlée", "+1", -3, "1", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme)
-VALUES("Bâton de lumière (mêlée)", 1, "mêlée", "Util.", -2, "1", true);
+VALUES("Bâton de lumière (Mêlée)", 1, "Mêlée", "Util.", -2, "1", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, switchable_arme)
-VALUES("Lame du néant", 1, "mêlée", "Util.", -3, "1", "Chaque fois que le porteur combat, il fait 1 attaque supplémentaire avec cette arme.", true);
+VALUES("Lame du néant", 1, "Mêlée", "Util.", -3, "1", "Chaque fois que le porteur combat, il fait 1 attaque supplémentaire avec cette arme.", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, switchable_arme)
-VALUES("Lame du néant", 1, "mêlée", "Util.", -3, "1", "Chaque fois que le porteur combat, il fait 1 attaque supplémentaire avec cette arme.", true);
+VALUES("Lame du néant", 1, "Mêlée", "Util.", -3, "1", "Chaque fois que le porteur combat, il fait 1 attaque supplémentaire avec cette arme.", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, switchable_arme)
-VALUES("Faux du néant", 1, "mêlée", "x2", -4, "3", "A chaque attaque de cette arme, soustrayez 1 au jet de touche de l'attaque.", true);
+VALUES("Faux du néant", 1, "Mêlée", "x2", -4, "3", "A chaque attaque de cette arme, soustrayez 1 au jet de touche de l'attaque.", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme)
-VALUES("Fauchard", 1, "mêlée", "+2", -4, "2", true);
+VALUES("Fauchard", 1, "Mêlée", "+2", -4, "2", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, base_arme)
-VALUES("Faux d'hyperphase", 1, "mêlée", "+2", -4, "3", true);
+VALUES("Faux d'hyperphase", 1, "Mêlée", "+2", -4, "3", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, base_arme)
-VALUES("Fauchons d'hyperphase", 1, "mêlée", "Util.", -3, "2", "Chaque fois que le porteur combat, il fait 1 attaque supplémentaire avec cette arme.", true);
+VALUES("Fauchons d'hyperphase", 1, "Mêlée", "Util.", -3, "2", "Chaque fois que le porteur combat, il fait 1 attaque supplémentaire avec cette arme.", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, base_arme)
-VALUES("Sonde monomoléculaire", 1, "mêlée", "Util.", -1, "1", true);
+VALUES("Sonde monomoléculaire", 1, "Mêlée", "Util.", -1, "1", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, base_arme)
-VALUES("Mandibules", 1, "mêlée", "Util.", 0, "1", "A chaque attaque de cette arme, un jet de touche non modifié de 6 blesse automatiquement la cible.", true);
+VALUES("Mandibules", 1, "Mêlée", "Util.", 0, "1", "A chaque attaque de cette arme, un jet de touche non modifié de 6 blesse automatiquement la cible.", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, base_arme)
-VALUES("Griffes ophydiennes", 1, "mêlée", "Util.", -1, "1", "Chaque fois que le porteur combat, il fait 2 attaque supplémentaires avec cette arme.", true);
+VALUES("Griffes ophydiennes", 1, "Mêlée", "Util.", -1, "1", "Chaque fois que le porteur combat, il fait 2 attaque supplémentaires avec cette arme.", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme, base_arme)
-VALUES("Griffe acérées", 1, "mêlée", "+2", -2, "2", true, true);
+VALUES("Griffe acérées", 1, "Mêlée", "+2", -2, "2", true, true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, switchable_arme)
-VALUES("Câbles constricteurs", 1, "mêlée", "Util.", -1, "1", "A chaque attaque de cette arme, faites 2 jets de touche au lieu de 1", true);
+VALUES("Câbles constricteurs", 1, "Mêlée", "Util.", -1, "1", "A chaque attaque de cette arme, faites 2 jets de touche au lieu de 1", true);
 
 -- Insertion des equipements ---------------------------------------
 INSERT INTO Equipement(nom_equipement, id_faction, desc_equipement, switchable_equipement, base_equipement, point_equipement)
@@ -536,10 +536,10 @@ INSERT INTO Reliques(id_faction, nom_relique, portée_relique, type_relique, for
 VALUES(1, "Bâton voltaique (tir)", 18, "Assaut 4", "6", -2, "2", "Chaque fois qu'une attaque est effectuée avec cette arme, un jet de touche de 6 non modifié permet d'obtenir 2 touches supplémentaires.", "Bâton de lumière");
 
 INSERT INTO Reliques(id_faction, nom_relique, type_relique, force_relique, pa_relique, dégat_relique, prerequis_relique)
-VALUES(1, "Bâton voltaique (mêlée)", "mêlée", "+2", -2, "2", "Bâton de lumière");
+VALUES(1, "Bâton voltaique (Mêlée)", "Mêlée", "+2", -2, "2", "Bâton de lumière");
 
 INSERT INTO Reliques(id_faction, nom_relique, type_relique, force_relique, pa_relique, dégat_relique, aptitude_relique, prerequis_relique)
-VALUES(1, "Fauche-le-néant", "mêlée", "+2", -4, "3", "À chaque attaque de cette arme, les règles permettant d'ignorer les blessures ne peuvent pas être utilisées.", "Faux du néant ou Fauchard");
+VALUES(1, "Fauche-le-néant", "Mêlée", "+2", -4, "3", "À chaque attaque de cette arme, les règles permettant d'ignorer les blessures ne peuvent pas être utilisées.", "Faux du néant ou Fauchard");
 
 INSERT INTO Reliques(id_faction, nom_relique, type_relique, desc_relique, prerequis_relique)
 VALUES(1, "Trame sempiternelle", "Equipement", "Figurine d'INFANTERIE NOBLE seulement. Ajoutez 1 aux caractéristique d'Endurance et de Points de Vie du porteu.", "Infanterie noble");
@@ -557,7 +557,7 @@ INSERT INTO Reliques(id_faction, id_sousFaction, nom_relique, type_relique, desc
 VALUES(1, 6, "Le manteau d'infinité", "Equipement", "Ajoutez 1 aux jets de sauvegarde d'armure pour le porteur. --Chaque fois le que le porteur est censé perdre un PV, jetez un D6: sur un jet de 6, le PV n'est pas perdu.", "Nihilakh");
 
 INSERT INTO Reliques(id_faction, id_sousFaction, nom_relique, type_relique, force_relique, pa_relique, dégat_relique, aptitude_relique, prerequis_relique)
-VALUES(1, 2, "La faux de sang", "mêlée", "+2", -4, "2", "Chaque fois que le porteur combat, il fait 2 attaques supplémentaires avec cette arme.", "Novokh avec Faux du néant ou Fauchard");
+VALUES(1, 2, "La faux de sang", "Mêlée", "+2", -4, "2", "Chaque fois que le porteur combat, il fait 2 attaques supplémentaires avec cette arme.", "Novokh avec Faux du néant ou Fauchard");
 
 INSERT INTO Reliques(id_faction, id_sousFaction, nom_relique, type_relique, desc_relique, prerequis_relique)
 VALUES(1, 7, "Le masque du vainqueur", "Equipement", "Figurine Sautekh uniquement. Au début de la phase de combat, vous pouvez choisir une unité ennemie dans un rayon de 3 pouce autour du porteur. Cette unité n'est pas éligible pour combattre cette phase jusqu'à ce que toutes les unités éligibles de votre armée l'aient fait.", "Sautekh");
@@ -566,7 +566,7 @@ INSERT INTO Reliques(id_faction, id_sousFaction, nom_relique, portée_relique, t
 VALUES(1, 5, "Bâton solaire (tir)", 24, "Assaut 6", "5", -2, "1", "Chaque fois qu'une attaque est effectuée avec cette arme contre une unité d'infanterie, si une touche est causée, alors jusqu'à la fin du tour cette unité est aveuglée. Les unités aveuglées ne peuvent pas tirer en état d'alerte ni préparer leur défense.", "Nephrekh avec un Bâton de lumière");
 
 INSERT INTO Reliques(id_faction, id_sousFaction, nom_relique, type_relique, force_relique, pa_relique, dégat_relique, aptitude_relique, prerequis_relique)
-VALUES(1, 5, "Bâton solaire (mêlée)", "mêlée", "util.", -2, "1", "Chaque fois qu'une attaque est effectuée avec cette arme contre une unité d'infanterie, si une touche est causée, alors jusqu'à la fin du tour cette unité est aveuglée. Les unités aveuglées ne peuvent pas tirer en état d'alerte ni préparer leur défense.", "Nephrekh avec un Bâton de lumière");
+VALUES(1, 5, "Bâton solaire (Mêlée)", "Mêlée", "util.", -2, "1", "Chaque fois qu'une attaque est effectuée avec cette arme contre une unité d'infanterie, si une touche est causée, alors jusqu'à la fin du tour cette unité est aveuglée. Les unités aveuglées ne peuvent pas tirer en état d'alerte ni préparer leur défense.", "Nephrekh avec un Bâton de lumière");
 
 -- Insertion des Liaisons d'armes ---------------------------------------
 INSERT INTO ArmeLiaison(id_arme, id_unit, nom_arme, nom_unit)
@@ -577,7 +577,7 @@ WHERE nom_unit = "Illuminor Szeras" AND nom_arme = "Lance Spectrale (tir)";
 INSERT INTO ArmeLiaison(id_arme, id_unit, nom_arme, nom_unit)
 SELECT num_arme, numéro_unit, nom_arme, nom_unit
 FROM Arme, Unité
-WHERE nom_unit = "Illuminor Szeras" AND nom_arme = "Lance Spectrale (mêlée)";
+WHERE nom_unit = "Illuminor Szeras" AND nom_arme = "Lance Spectrale (Mêlée)";
 
 INSERT INTO ArmeLiaison(id_arme, id_unit, nom_arme, nom_unit)
 SELECT num_arme, numéro_unit, nom_arme, nom_unit
@@ -607,7 +607,7 @@ WHERE nom_unit = "Tétraque" AND nom_arme = "Bâton de lumière (Tir)";
 INSERT INTO ArmeLiaison(id_arme, id_unit, nom_arme, nom_unit)
 SELECT num_arme, numéro_unit, nom_arme, nom_unit
 FROM Arme, Unité
-WHERE nom_unit = "Tétraque" AND nom_arme = "Bâton de lumière (mêlée)";
+WHERE nom_unit = "Tétraque" AND nom_arme = "Bâton de lumière (Mêlée)";
 
 INSERT INTO ArmeLiaison(id_arme, id_unit, nom_arme, nom_unit)
 SELECT num_arme, numéro_unit, nom_arme, nom_unit

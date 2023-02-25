@@ -9,6 +9,7 @@ type mainScriptType = {
     , h4TitreTraitSousFaction: HTMLElement
     , ulDescSousFaction: HTMLElement
     , divAffichageUnité: HTMLElement
+    , h5NomUnitéActuel: HTMLElement
     , divAjoutUnite: HTMLElement
     , selectUnité: HTMLSelectElement
     , btnAfficherUnitTrait: HTMLInputElement
@@ -18,6 +19,7 @@ type mainScriptType = {
     , checkSeigneur: HTMLInputElement
     , checkSeigneurTraitSec: HTMLInputElement
     , divTableauUnit: HTMLElement
+    , h4NomUnitéTrait: HTMLElement
     , divAffichageDetailTrait: HTMLElement
     , selectTrait: HTMLSelectElement
     , btnRetourUnitTrait: HTMLInputElement
@@ -32,6 +34,7 @@ class mainScript {
         this.type.divChoixSousFaction.hidden = true
         this.type.selectFaction.value = ""
         this.type.divAffichageBonusSousFaction.hidden = true
+        this.type.divAffichageDetailTrait.hidden = true
     }
 
     get type(): mainScriptType {
@@ -142,8 +145,10 @@ class mainScript {
             }
             ajax.open("POST", "fonction.php?action="+ "affichageStatsUnit" + "&unit=" + valueSelect, true)
             ajax.send()
+            this.type.h5NomUnitéActuel.innerHTML = valueSelect
         }
         else {
+            this.type.h5NomUnitéActuel.innerHTML = ""
             this.type.divTableauUnit.innerHTML = ""
         }
     }
@@ -158,7 +163,16 @@ class mainScript {
             }
             ajax.open("POST", "fonction.php?action="+ "affichageUnitTrait" + "&Trait=" + valueSelect, true)
             ajax.send()
+            this.type.divAffichageUnité.hidden = true
+            this.type.divAffichageDetailTrait.hidden = false
+            this.type.h4NomUnitéTrait.innerHTML = valueSelect
         }
+    }
+
+    cacherLesAptitudesSelect(): void {
+        this.type.divAffichageDetailTrait.hidden = true
+        this.type.divAffichageUnité.hidden = false
+        this.type.selectTrait.value = ""
     }
 
     affichageNomDescTrait(valueSelect: string = this.type.selectTrait.value): void {
@@ -187,6 +201,17 @@ class mainScript {
             }
         }
         ajax.open("POST", "fonction.php?action="+ "affichageUnitTraitNom" + "&Trait=" + valueSelect, true)
+        ajax.send()
+    }
+
+    afficherChoixDesEquipementsTableau(valueSelect: string = this.type.selectUnité.value): void {
+        const ajax = new XMLHttpRequest()
+        ajax.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("div_tableau_equip").innerHTML = this.responseText
+            }
+        }
+        ajax.open("POST", "fonction.php?action="+ "affichageTableauEquip" + "&UnitEquip=" + valueSelect, true)
         ajax.send()
     }
 }

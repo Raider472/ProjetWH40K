@@ -49,9 +49,11 @@
       <div id="div_ajout_unite" class="divAjoutUnité">
         <h2>Ajout d'unités</h2>
         <!--Unité-->
-        <div id="div_affichage_unité" class="selectionDunité">
+        <div id="div_affichage_unité">
           <div class="selectUnités">
             <h3>Sélection de l'unité</h3>
+            <h4 class="h4UnitActuel">Unité Actuel :</h4>
+            <h5 id="h5_nom_unité_actuel" class="h5NomUnit"></h5>
             <select id="select_unites" name="unites" size="15">
             </select>
           </div>
@@ -78,7 +80,8 @@
         <!--Aptitude-->
         <div id="div_affichage_detail_trait" class="selectionDunité">
           <div class="selectUnités">
-            <h3>Detail des traits de l'unité</h3>
+            <h3>Detail des traits de l'unité :</h3>
+            <h4 id="h4_nom_unité_trait" class="h4NomUnit"></h4>
             <select id="select_trait" name="unites" size="15">
             </select>
           </div>
@@ -127,35 +130,6 @@
           </div>
           <p>armes incompatibles</p>
           <div id="div_tableau_equip" class="tableEquip">
-            <div>
-              <table class="tab">
-                <thead>
-                  <tr>
-                    <th>head1</th>
-                    <th>head2</th>
-                    <th>head3</th>
-                    <th>head4</th>
-                    <th>head1</th>
-                    <th>head2</th>
-                    <th>head3</th>
-                    <th>head4</th>
-                  </tr>
-                  </thead>
-                    <tbody>
-                    <tr>
-                      <td>cell1_1</td>
-                      <td>cell2_1</td>
-                      <td>cell3_1</td>
-                      <td>cell4_1</td>
-                      <td>cell1_1</td>
-                      <td>cell2_1</td>
-                      <td>cell3_1</td>
-                      <td>cell4_1</td>
-                    </tr>
-                    </tbody>
-                  </tr>
-                </table>
-            </div>
           </div>
         </div>
         <!--Equipement-->
