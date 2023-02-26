@@ -13,8 +13,9 @@
         private int $switchable_arme; //boolean: 0 ou 1
         private int $base_arme; //boolean: 0 ou 1
         private int|null $trancheFig_arme;
+        private int $unique_arme; // boolean 0 ou 1
 
-        function __construct( int $num_arme, string $nom_arme, int $id_faction, int|null $portée_arme, string $type_arme, string $force_arme, int $pa_arme, string $dégat_arme, string|null $aptitude_arme, int|null $point_arme, int $switchable_arme, int $base_arme, int|null $trancheFig_arme) {
+        function __construct( int $num_arme, string $nom_arme, int $id_faction, int|null $portée_arme, string $type_arme, string $force_arme, int $pa_arme, string $dégat_arme, string|null $aptitude_arme, int|null $point_arme, int $switchable_arme, int $base_arme, int|null $trancheFig_arme, int $unique_arme) {
             $this->num_arme = $num_arme;
             $this->nom_arme = $nom_arme;
             $this->id_faction = $id_faction;
@@ -40,6 +41,7 @@
                 $trancheFig_arme = 0;
             }
             $this->trancheFig_arme = $trancheFig_arme;
+            $this->unique_arme = $unique_arme;
         }
 
         function getNumArme(): int {
@@ -92,6 +94,10 @@
 
         function getTrancheFigArme(): int {
             return  $this->trancheFig_arme;
+        }
+
+        function getUniqueArme(): int {
+            return  $this->unique_arme;
         }
     }
 ?>

@@ -20,6 +20,8 @@ let vueMain = new mainScript({
     divCheckSeigneurTraitSec: document.querySelector("[id=div_check_seigneur_traitSec]")!,
     checkSeigneur: document.querySelector("[id=chk_seigneur_guerre]")!,
     checkSeigneurTraitSec: document.querySelector("[id=chk_personnage_trait]")!,
+    divQuantitéUnit: document.querySelector("[id=div_quantité_unit]")!,
+    numQuantitéUnit: document.querySelector("[id=numQuantiteUnit]")!,
     divTableauUnit: document.querySelector("[id=div_tableau_unit]")!,
     h4NomUnitéTrait: document.querySelector("[id=h4_nom_unité_trait]")!,
     divAffichageDetailTrait: document.querySelector("[id=div_affichage_detail_trait]")!,
@@ -32,7 +34,8 @@ let vueMain = new mainScript({
 
 vueMain.type.selectFaction.addEventListener("change", function() {vueMain.afficherSousFaction()})
 vueMain.type.selectSousFaction.addEventListener("change", function() {vueMain.affichageDeSousFactionMain()})
-vueMain.type.selectUnité.addEventListener("change", function() {vueMain.affichageDesUnitésMain(), vueMain.afficherChoixDesEquipementsTableau()})
+vueMain.type.selectUnité.addEventListener("change", function() {vueMain.affichageDesUnitésMain()})
 vueMain.type.btnAfficherUnitTrait.addEventListener("click", function() {vueMain.affichageDesAptitudesSelect()})
 vueMain.type.selectTrait.addEventListener("change", function() {vueMain.affichageNomDescTrait()})
 vueMain.type.btnRetourUnitTrait.addEventListener("click", function() {vueMain.cacherLesAptitudesSelect()})
+vueMain.type.btnAjouterUnit.addEventListener("click", function() {vueMain.affichageDesEquipementsMain()})

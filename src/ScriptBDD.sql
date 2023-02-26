@@ -116,6 +116,7 @@ CREATE TABLE Arme (
     switchable_arme BOOLEAN DEFAULT false,
     base_arme BOOLEAN DEFAULT false,
     trancheFig_arme int DEFAULT NULL,
+    unique_arme BOOLEAN DEFAULT true,
     FOREIGN KEY(id_faction) REFERENCES Faction(num_faction)
 );
 
@@ -445,17 +446,17 @@ VALUES("Arbalète à tachyons", 1, 120, "Assaut 1", "12", -5, "D6", "Le porteur 
 INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme)
 VALUES("Bâton de lumière (Tir)", 1, 18, "Assaut 3", "5", -2, "1", true);
 
-INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme, base_arme)
-VALUES("Écorcheur Gauss", 1, 24, "Tir Rapide 1", "4", -1, "1", true, true);
+INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme, base_arme, unique_arme)
+VALUES("Écorcheur Gauss", 1, 24, "Tir Rapide 1", "4", -1, "1", true, true, false);
 
-INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme)
-VALUES("Faucheuse Gauss", 1, 12, "Assaut 2", "5", -2, "1", true);
+INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme, unique_arme)
+VALUES("Faucheuse Gauss", 1, 12, "Assaut 2", "5", -2, "1", true, false);
 
-INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, point_arme, switchable_arme, base_arme)
-VALUES("Projecteur de particules", 1, 12, "Pistolet 2", "6", 0, "1", 5, true, true);
+INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, point_arme, switchable_arme, base_arme, unique_arme)
+VALUES("Projecteur de particules", 1, 12, "Pistolet 2", "6", 0, "1", 5, true, true, false);
 
-INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, point_arme, switchable_arme)
-VALUES("Faisceau transdimensionnel", 1, 12, "Assaut 1", "4", -3, "3", 10, true);
+INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, point_arme, switchable_arme, unique_arme)
+VALUES("Faisceau transdimensionnel", 1, 12, "Assaut 1", "4", -3, "3", 10, true, false);
 
 INSERT INTO Arme(nom_arme, id_faction, portée_arme, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, base_arme)
 VALUES("Eclateur du jugement dernier (Basse puissance)", 1, 24, "Lourde 6", "8", -2, "D3", "Déflagration", true);
@@ -486,19 +487,16 @@ INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_ar
 VALUES("Lame du néant", 1, "Mêlée", "Util.", -3, "1", "Chaque fois que le porteur combat, il fait 1 attaque supplémentaire avec cette arme.", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, switchable_arme)
-VALUES("Lame du néant", 1, "Mêlée", "Util.", -3, "1", "Chaque fois que le porteur combat, il fait 1 attaque supplémentaire avec cette arme.", true);
-
-INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, switchable_arme)
 VALUES("Faux du néant", 1, "Mêlée", "x2", -4, "3", "A chaque attaque de cette arme, soustrayez 1 au jet de touche de l'attaque.", true);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme)
 VALUES("Fauchard", 1, "Mêlée", "+2", -4, "2", true);
 
-INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, base_arme)
-VALUES("Faux d'hyperphase", 1, "Mêlée", "+2", -4, "3", true);
+INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, base_arme, unique_arme)
+VALUES("Faux d'hyperphase", 1, "Mêlée", "+2", -4, "3", true, false);
 
-INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, base_arme)
-VALUES("Fauchons d'hyperphase", 1, "Mêlée", "Util.", -3, "2", "Chaque fois que le porteur combat, il fait 1 attaque supplémentaire avec cette arme.", true);
+INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, base_arme, unique_arme)
+VALUES("Fauchons d'hyperphase", 1, "Mêlée", "Util.", -3, "2", "Chaque fois que le porteur combat, il fait 1 attaque supplémentaire avec cette arme.", true, false);
 
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, base_arme)
 VALUES("Sonde monomoléculaire", 1, "Mêlée", "Util.", -1, "1", true);
@@ -509,11 +507,11 @@ VALUES("Mandibules", 1, "Mêlée", "Util.", 0, "1", "A chaque attaque de cette a
 INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, base_arme)
 VALUES("Griffes ophydiennes", 1, "Mêlée", "Util.", -1, "1", "Chaque fois que le porteur combat, il fait 2 attaque supplémentaires avec cette arme.", true);
 
-INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme, base_arme)
-VALUES("Griffe acérées", 1, "Mêlée", "+2", -2, "2", true, true);
+INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, switchable_arme, base_arme, unique_arme)
+VALUES("Griffe acérées", 1, "Mêlée", "+2", -2, "2", true, true, false);
 
-INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, switchable_arme)
-VALUES("Câbles constricteurs", 1, "Mêlée", "Util.", -1, "1", "A chaque attaque de cette arme, faites 2 jets de touche au lieu de 1", true);
+INSERT INTO Arme(nom_arme, id_faction, type_arme, force_arme, pa_arme, dégat_arme, aptitude_arme, switchable_arme, unique_arme)
+VALUES("Câbles constricteurs", 1, "Mêlée", "Util.", -1, "1", "A chaque attaque de cette arme, faites 2 jets de touche au lieu de 1", true, false);
 
 -- Insertion des equipements ---------------------------------------
 INSERT INTO Equipement(nom_equipement, id_faction, desc_equipement, switchable_equipement, base_equipement, point_equipement)

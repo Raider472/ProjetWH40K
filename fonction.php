@@ -45,6 +45,14 @@
             $tab = $lesUnités->fetchUnitByName($parametre);
             $lesUnités->putIntoTable($tab);
         break;
+        case "affichageNbrUnit":
+            require "src/classes/LesUnités.php";
+            $parametre = $_REQUEST["unit"];
+            $lesUnités = new LesUnités();
+            $tab = $lesUnités->fetchUnitByName($parametre);
+            $data = $lesUnités->putInXML($tab);
+            file_put_contents('Data.json', $data);
+        break;
         case "affichageUnitTrait":
             require "src/classes/LesAptitudes.php";
             $parametre = $_REQUEST["Trait"];
@@ -67,7 +75,14 @@
             $desc = $tab[0]->getDescApti();
             $uneAptitudeDesc->miseEnPlaceDescription($desc);
         break;
-
+        case "affichageEquipChk":
+            require "src/classes/LesArmes.php";
+            $parametre = $_REQUEST["UnitEquip"];
+            $nbrUnit = $_REQUEST["NombreUnit"];
+            $lesArmes = new LesArmes();
+            $tab = $lesArmes->fetchAptitudeByUnitName($parametre);
+            $lesArmes->putIntoCheckBox($tab, intval($nbrUnit));
+        break;
         case "affichageTableauEquip":
             require "src/classes/LesArmes.php";
             $parametre = $_REQUEST["UnitEquip"];

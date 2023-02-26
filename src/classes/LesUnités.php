@@ -89,6 +89,18 @@
             }
         }
 
+        function putInXML(array $tab): string {
+            $data = [
+                [
+                    "value" => $tab[0]->getMinUnit(),
+                    "min" => $tab[0]->getMinUnit(),
+                    "max" => $tab[0]->getMaxUnit()
+                ]
+            ];
+            $data = json_encode($data, JSON_PRETTY_PRINT);
+            return $data;
+        }
+
         function putIntoTable(array $tab): void {
             echo "<table class=\"tab\">";
                 echo "<thead>";

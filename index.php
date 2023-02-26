@@ -71,6 +71,10 @@
               <input id="chk_personnage_trait" type="checkbox" value="secondSeigneur" class="mgc mgc-primary">
             </div>
           </div>
+          <div id="div_quantité_unit" class="quantitéUnit">
+            <label for="numQuantiteUnit">Quantité</label>
+            <input id="numQuantiteUnit" type="number" name="UnitQuantité" min="0" max="0" size="3">
+          </div>
           <div class="tableUnit">
             <div id="div_tableau_unit">
             </div>
@@ -98,35 +102,6 @@
         <div class="choixEquipement"> <!--Elle apparait quand l'unité est selectionner-->
           <h3>Choix des équipements</h3>
           <div id="div_choix_equipement" class="optionEquip">
-            <div class="divOptionEquip">
-              <div>
-                <label for="chk_test">Test</label>
-                <input type="checkbox" id="chk_test" value="test" class="mgc mgc-primary">
-                <input type="number" name="test" id="num_test" min="1" max="100" size="3">
-              </div>
-              <div>
-                <label for="chk_test2">Test</label>
-                <input type="checkbox" id="chk_test2" value="test" class="mgc mgc-primary">
-                <input type="number" name="test2" id="num_test2" min="1" max="100" size="3">
-              </div>
-              <div>
-                <label for="chk_test3">Test</label>
-                <input type="checkbox" id="chk_test3" value="test" class="mgc mgc-primary">
-                <input type="number" name="test3" id="num_test3" min="1" max="100" size="3">
-              </div>
-            </div>
-            <div class="divOptionEquip">
-              <div>
-                <label for="chk_test4">Test</label>
-                <input type="checkbox" id="chk_test4" value="test" class="mgc mgc-primary">
-                <input type="number" name="test4" id="num_test4" min="1" max="100" size="3">
-              </div>
-              <div>
-                <label for="chk_test5">Test</label>
-                <input type="checkbox" id="chk_test5" value="test" class="mgc mgc-primary">
-                <input type="number" name="test5" id="num_test5" min="1" max="100" size="3">
-              </div>
-            </div>
           </div>
           <p>armes incompatibles</p>
           <div id="div_tableau_equip" class="tableEquip">

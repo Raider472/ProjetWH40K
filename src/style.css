@@ -143,6 +143,14 @@ main h2 {
     width: 99%;
 }
 
+.quantitéUnit {
+    width: 99%;
+    margin-top: 1em;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5em;
+}
+
 .choixEquipement h3 {
     border-bottom: 2px solid gray;
     font-size: 1.5em;
@@ -154,6 +162,12 @@ main h2 {
     justify-content: center;
     align-items: center;
     gap: 1.5em;
+}
+
+.optionEquip div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5em;
 }
 
 .divOptionEquip {

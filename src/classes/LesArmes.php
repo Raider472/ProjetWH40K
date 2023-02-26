@@ -26,7 +26,8 @@
                     $data->point_arme, 
                     $data->switchable_arme, 
                     $data->base_arme, 
-                    $data->trancheFig_arme
+                    $data->trancheFig_arme,
+                    $data->unique_arme
                 );
             }
             return $arme;
@@ -51,7 +52,8 @@
                     $data->point_arme, 
                     $data->switchable_arme, 
                     $data->base_arme, 
-                    $data->trancheFig_arme
+                    $data->trancheFig_arme,
+                    $data->unique_arme
                 );
             }
             return $desArmesUnits;
@@ -112,6 +114,29 @@
                 echo "</table>";
                 echo "</div>";
             }
+        }
+
+        function putIntoCheckBox(array $tab, int $nombreUnit): void {
+            echo "<div class=\"divOptionEquip\">";
+            for($i = 0, $j = 1; $i < Count($tab); $i++, $j++) {
+                echo "<div>";
+                    echo "<label for=\"" . "chk_" . $tab[$i]->getNumArme() . "\"" . ">" . $tab[$i]->getNomArme() . "</label>";
+                    echo "<input type=\"checkbox\" id=\"chk_" . $tab[$i]->getNumArme() . "\"" . " value=\"" . $tab[$i]->getNumArme() . "\"" . "class=\"mgc mgc-primary\">";
+                    if ($tab[$i]->getUniqueArme() != 1) {
+                        if ($tab[$i]->getBaseArme()=== 1) {
+                            echo "<input type=\"number\" id=\"num_" . $tab[$i]->getNumArme() . "\"" . "value=\"" . $nombreUnit . "\"" . "min=\"0\"" . "max=\"" . $nombreUnit . "\"" . "size=\"3\">";
+                        }
+                        else {
+                            echo "<input type=\"number\" id=\"num_" . $tab[$i]->getNumArme() . "\"" . "value=\"0\"" . "min=\"0\"" . "max=\"" . $nombreUnit . "\"" . "size=\"3\">";
+                        }
+                    }
+                echo "</div>";
+                if ($j % 3 === 0) {
+                    echo "</div>";
+                    echo "<div class=\"divOptionEquip\">";
+                }
+            }
+            echo "</div>";
         }
 
         function showAll(array $tab): void {
