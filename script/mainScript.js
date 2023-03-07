@@ -124,11 +124,7 @@ class mainScript {
         };
         ajax.open("POST", "fonction.php?action=" + "affichageNbrUnit" + "&unit=" + valueSelect, true);
         ajax.send();
-        setTimeout(this.fetchNumberQuantité, 1000);
-        //let json = JSON.parse("script/Data.json")
-        //
-        //this.type.numQuantitéUnit.setAttribute("max", json[0].max)
-        //this.type.numQuantitéUnit.setAttribute("min", json[0].min)
+        setTimeout(this.fetchNumberQuantité, 400);
     }
     fetchNumberQuantité() {
         fetch("./Data.json")
@@ -167,7 +163,7 @@ class mainScript {
             });
             test.type.numQuantitéUnit.value = data[0].value;
             test.type.numQuantitéUnit.setAttribute("max", data[0].max);
-            test.type.numQuantitéUnit.setAttribute("max", data[0].min);
+            test.type.numQuantitéUnit.setAttribute("min", data[0].min);
         });
     }
     affichageDesAptitudesSelect(valueSelect = this.type.selectUnité.value) {
@@ -221,16 +217,14 @@ class mainScript {
         this.afficherChoixDesEquipementsTableau();
     }
     afficherChoisDesEquipementsCheckBox(valueSelect = this.type.selectUnité.value) {
-        //const ajax = new XMLHttpRequest()
-        this.type.numQuantitéUnit.setAttribute("max", "100");
-        this.type.numQuantitéUnit.setAttribute("min", "50");
-        /*ajax.onreadystatechange = function() {
+        const ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("div_choix_equipement").innerHTML = this.responseText
+                document.getElementById("div_choix_equipement").innerHTML = this.responseText;
             }
-        }
-        ajax.open("POST", "fonction.php?action="+ "affichageEquipChk" + "&UnitEquip=" + valueSelect + "&NombreUnit=" + this.type.numQuantitéUnit.value, true)
-        ajax.send()*/
+        };
+        ajax.open("POST", "fonction.php?action=" + "affichageEquipChk" + "&UnitEquip=" + valueSelect + "&NombreUnit=" + this.type.numQuantitéUnit.value, true);
+        ajax.send();
     }
     afficherChoixDesEquipementsTableau(valueSelect = this.type.selectUnité.value) {
         const ajax = new XMLHttpRequest();
